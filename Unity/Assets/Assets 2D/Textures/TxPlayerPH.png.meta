@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: 14c7a9b108491b04db1d1bc47a2dd698
+timeCreated: 1429278973
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: TxPlayerPH_Head
+    21300002: TxPlayerPH_HandFX
+    21300004: TxPlayerPH_ArmLower
+    21300006: TxPlayerPH_Hand
+    21300008: TxPlayerPH_FistFX
+    21300010: TxPlayerPH_ArmUpper
+    21300012: TxPlayerPH_Torso
+    21300014: TxPlayerPH_Fist
+    21300016: TxPlayerPH_Feet
+    21300018: TxPlayerPH_Leg
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 8192
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: TxPlayerPH_Head
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 314
+        width: 169
+        height: 188
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TxPlayerPH_HandFX
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 357
+        width: 89
+        height: 88
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TxPlayerPH_ArmLower
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 328
+        width: 131
+        height: 139
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 3, z: 0, w: 0}
+    - name: TxPlayerPH_Hand
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 199
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TxPlayerPH_FistFX
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 200
+        width: 56
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TxPlayerPH_ArmUpper
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 35
+        width: 115
+        height: 196
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TxPlayerPH_Torso
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 14
+        width: 362
+        height: 168
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TxPlayerPH_Fist
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 264
+        width: 53
+        height: 43
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TxPlayerPH_Feet
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 196
+        width: 57
+        height: 117
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TxPlayerPH_Leg
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 187
+        width: 103
+        height: 169
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
