@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controls: {fileID: 11400000, guid: 728b3230141e56147af76995eba620e6, type: 2}
+  Actor: {fileID: 0}
 --- !u!114 &1405762229
 MonoBehaviour:
   m_ObjectHideFlags: 0

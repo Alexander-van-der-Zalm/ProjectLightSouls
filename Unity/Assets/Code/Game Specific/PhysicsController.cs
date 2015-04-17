@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PhysicsController : MonoBehaviour {
+public class PhysicsController : MonoBehaviour 
+{
+    public float Accel;
+    public float Friction;
+    public float MaxSpeed;
+    public float TimeToMaxSpeed;
 
 	// Use this for initialization
 	void Start () {
