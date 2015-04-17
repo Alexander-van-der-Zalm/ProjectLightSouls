@@ -33,7 +33,7 @@ public class EditorPlus:Editor
     /// </summary>
     internal static bool SavedFoldoutShared(string name, int index = -1, string uniqueID = "")
     {
-        return SavedFoldoutInstance(new GUIContent(name, ""), null, index, uniqueID);
+        return SavedFoldoutInstance(new GUIContent(name, ""), null, index, name + " " + uniqueID);
     }
 
 
