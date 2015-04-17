@@ -19,7 +19,7 @@ public class ActorController : MonoBehaviour
 
     public void Dodge()
     {
-        Debug.Log("Dodge");
+        pc.Dodge(pc.Input);
     }
 
     public void Heal()

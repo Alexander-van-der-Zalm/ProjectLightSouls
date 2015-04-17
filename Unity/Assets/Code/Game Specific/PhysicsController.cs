@@ -10,15 +10,17 @@ public class PhysicsController : MonoBehaviour
     public float MovementMaxSpeed;
     public float TimeToMaxSpeed;
 
-    public float RollMaxSpeed;
-    public float RollDistance;
+    public float DodgeMaxSpeed;
+    public float DodgeDistance;
 
     public Vector2 Input;
 
     private Rigidbody2D rb;
 
-    //private 
-    private bool rolling = false;
+    private Vector2 airSpeed;
+    private bool airborn = false;
+
+    private float speed;
 
 	// Use this for initialization
 	void Start () 
@@ -32,64 +34,58 @@ public class PhysicsController : MonoBehaviour
 	    //Normalize input
         Input.Normalize();
 
-        recalculateAccelFriction();
+        recalculateAccelFriction(TimeToMaxSpeed, MovementMaxSpeed);
         
         float dt = Time.deltaTime;
 
         Vector2 v = rb.velocity;
         Vector2 a = Vector2.zero;
-        
-        if(!rolling)
+        Vector2 friction = Vector2.zero;
+
+        if (!airborn)
+        {
             a = Input * m_accel;
+            friction = v * m_friction;
+            rb.velocity += dt * (a - friction);
+        }
+        else
+            rb.velocity = airSpeed;
 
-        Vector2 friction = v * m_friction;
-
-        rb.velocity += dt * (a - friction);
+        speed = rb.velocity.magnitude;
     }
 
-    private void recalculateAccelFriction()
+    private void recalculateAccelFriction(float timeToMaxSpeed, float maxSpeed)
     {
         // Inefficient recalculate each fram, but who cares
-        m_friction = TimeToMaxSpeed != 0 ? 2 / TimeToMaxSpeed : 0;
-        m_accel = m_friction * MovementMaxSpeed;
+        m_friction = timeToMaxSpeed != 0 ? 2 / TimeToMaxSpeed : 0;
+        m_accel = m_friction * maxSpeed;
     }
 
-    Coroutine rollCR;
+    Coroutine dodgeCR;
 
-    public void Roll()
+    public void Dodge(Vector2 direction)
     {
-        rollCR = StartCoroutine(RollCR());
+        float time = DodgeDistance/DodgeMaxSpeed;
+
+        dodgeCR = StartCoroutine(DodgeCR(direction, DodgeMaxSpeed, time));
     }
 
-    public void StopRoll()
+    public void StopDodge()
     {
-        StopCoroutine(rollCR);
-        rolling = false;
+        StopCoroutine(dodgeCR);
+        airborn = false;
     }
 
-    private IEnumerator RollCR()
+    private IEnumerator DodgeCR(Vector2 direction, float speed, float time)
     {
-        rolling = true;
+        airborn = true;
 
-        float distance = 0;
+        airSpeed = direction.normalized * speed;
 
-        float speed = 0;
-        float time = 0;
-        
-        float timePassed = 0;
+        yield return new WaitForSeconds(time);
 
-        while(timePassed < time)
-        {
-            
-            timePassed += Time.deltaTime;
-            yield return null;
-        }
-
-
-        rolling = false;
+        airborn = false;
     }
-
-
 
     #region Debug
     //// for debug
