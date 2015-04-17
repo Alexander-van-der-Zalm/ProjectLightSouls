@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
-using UnityEditor;
+
 using XboxCtrlrInput;
 using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 
 [System.Serializable]
@@ -127,7 +130,7 @@ public class AxisKey
     #endregion
 
     #region GUI
-
+    #if UNITY_EDITOR
     public void OnGui()
     {
         //EditorGUILayout.BeginHorizontal();
@@ -167,6 +170,8 @@ public class AxisKey
         }
     }
 
+    #endif
+
     private void changed()
     {
         if(keys.Count ==0)
@@ -194,6 +199,8 @@ public class AxisKey
         }
         
     }
+
+    #if UNITY_EDITOR
 
     private void xboxDpadGUI()
     {
@@ -235,6 +242,6 @@ public class AxisKey
         selectedIndex2 = EditorGUILayout.Popup(selectedIndex2, ControlHelper.KeyCodeOptions, GUILayout.Width(80.0f));
         keys[1] = ControlHelper.KeyCodeOptions[selectedIndex2];
     }
-
+    #endif
     #endregion
 }

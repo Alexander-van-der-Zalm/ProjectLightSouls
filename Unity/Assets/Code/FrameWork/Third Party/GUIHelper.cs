@@ -1,6 +1,8 @@
 ﻿using System;
-using UnityEditor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
 
 // From: http://www.toxicfork.com/90/fixed-width-labels-for-fields-in-unity3d
 // FixedWidthLabel class. Extends IDisposable, so that it can be used with the "using" keyword.
@@ -44,3 +46,4 @@ class ZeroIndent : IDisposable //helper class to clear indentation
         EditorGUI.indentLevel = originalIndent;//restore original indentation
     }
 }
+#endif

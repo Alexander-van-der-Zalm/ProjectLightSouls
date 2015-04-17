@@ -66,6 +66,8 @@ public class ScriptableObjectHelper
     }
 }
 
+#endif
+
 public class EasyScriptableObject<T> : ScriptableObject, IEasyScriptableObject, IInitSO where T : ScriptableObject, IEasyScriptableObject, IInitSO
 {
     public static T Create()
@@ -93,7 +95,7 @@ public class EasyScriptableObject<T> : ScriptableObject, IEasyScriptableObject, 
     //    return obj;
     //}
 
-
+    #if UNITY_EDITOR
     public void AddObjectToAsset(UnityEngine.Object obj)
     {
         // Fail if the object is not an asset
@@ -126,10 +128,17 @@ public class EasyScriptableObject<T> : ScriptableObject, IEasyScriptableObject, 
         AssetDatabase.ImportAsset(path);
     }
 
-    //public void Save()
-    //{
+    #else
 
-    //}
+    public void AddObjectToAsset(UnityEngine.Object obj)
+    {
+    }
+
+    public void AddObjectToAsset(string path)
+    {
+    }
+
+    #endif
 
     public void Destroy()
     {
@@ -161,4 +170,3 @@ public interface IInitSO
 {
     void Init(HideFlags newHideFlag = HideFlags.None);
 }
-#endif

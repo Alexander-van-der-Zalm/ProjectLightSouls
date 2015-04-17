@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using XboxCtrlrInput;
 using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public enum ControlKeyType
 {
@@ -48,6 +51,8 @@ public class ControlKey
         return new ControlKey(ControlKeyType.PC, kc.ToString());
     }
 
+    #if UNITY_EDITOR
+
     public void OnGui()
     {
         GUILayout.Space(-20);
@@ -75,4 +80,6 @@ public class ControlKey
     {
         selectedIndex = EditorGUILayout.Popup(selectedIndex, ControlHelper.XboxAxixOptions, GUILayout.Width(80.0f));
     }
+
+    #endif
 }

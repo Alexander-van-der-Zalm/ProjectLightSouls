@@ -3,8 +3,11 @@ using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using XboxCtrlrInput;
+
+//#if UNITY_EDITOR
+//using UnityEditor;
+//#endif
 
 // Make generic
 [Serializable]
