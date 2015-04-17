@@ -14,7 +14,7 @@ public class ActorController : MonoBehaviour
 	
     public void Move(float horizontal, float vertical)
     {
-        
+        pc.Input = new Vector2(horizontal, vertical);
     }
 
     public void Dodge()

@@ -110,6 +110,4 @@ public class ControlScheme:EasyScriptableObject<ControlScheme>// : MonoBehaviour
             action.Update(this);
         }
     }
-
-    
 }
