@@ -5,6 +5,7 @@ using System.Collections;
 public class ActorController : MonoBehaviour 
 {
     private PhysicsController pc;
+    private Vector2 lastInputDirection;
 
 	// Use this for initialization
 	void Start () 
@@ -17,9 +18,9 @@ public class ActorController : MonoBehaviour
         pc.Input = new Vector2(horizontal, vertical);
     }
 
-    public void Dodge()
+    public void Dodge(Vector2 dir)
     {
-        pc.Dodge(pc.Input);
+        pc.Dodge(dir);
     }
 
     public void Heal()

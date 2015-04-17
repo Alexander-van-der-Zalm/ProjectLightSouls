@@ -5,8 +5,12 @@ using System.Collections;
 public class InputController : MonoBehaviour 
 {
     public ControlScheme Controls;
-    private ActorController actor;
+    public float deadZone = 0.075f;
 
+    private ActorController actor;
+    private Vector2 lastInputDirection;
+
+    
     public enum PlayerActions
     {
         Dodge = 0,
@@ -33,8 +37,13 @@ public class InputController : MonoBehaviour
     {
         Controls.Update();
 
+        Vector2 input = new Vector2(Controls.Horizontal.Value(), Controls.Vertical.Value());
+        
+        if (input.magnitude > deadZone)
+            lastInputDirection = input;
+
         if (Controls.Actions[(int)PlayerActions.Dodge].IsPressed())
-            actor.Dodge();
+            actor.Dodge(lastInputDirection);
 
         if (Controls.Actions[(int)PlayerActions.Heal].IsPressed())
             actor.Heal();
