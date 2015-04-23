@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(AIBehaviorController), typeof(PhysicsController))]
+[RequireComponent(typeof(AIBehaviorController), typeof(PhysicsController), typeof(Animator))]
 public class FrogAI : MonoBehaviour 
 {
     
@@ -11,15 +11,21 @@ public class FrogAI : MonoBehaviour
 
     private AIBehaviorController AIController;
     private PhysicsController ph;
+    private Animator anim;
+
+    private Coroutine currentRoutine;
 
 	// Use this for initialization
 	void Start () 
     {
         AIController = GetComponent<AIBehaviorController>();
         ph = GetComponent<PhysicsController>();
+        anim = GetComponent<Animator>();
 
         for (int i = 0; i < StandardBehaviors.Count; i++)
             AIController.AddBehavior(StandardBehaviors[i].Behavior, true);
+
+        currentRoutine = StartCoroutine(RandomMoveCR());
 	}
 	
 	// Update is called once per frame
@@ -34,11 +40,14 @@ public class FrogAI : MonoBehaviour
 
     #region Boss Logic
 
-    // Core logic
-    // Action
-    // Wait
-    // *Rotate 
-    // * = optional
+    private IEnumerator CoreLogicLoop()
+    {
+        // Core logic
+        // Action
+        // Wait
+        // *Rotate 
+        // * = optional
+    }
 
     private void StartFunction(string name)
     {
@@ -72,6 +81,26 @@ public class FrogAI : MonoBehaviour
     private void RotateCR()
     {
 
+    }
+
+    private IEnumerator RandomMoveCR()
+    {
+        Vector2 randomDir = new Vector2();
+        while(randomDir.magnitude == 0)
+        {
+            randomDir = new Vector2(Random.Range(-1,1),Random.Range(-1,1));
+        }
+        randomDir.Normalize();
+
+        ph.Input = randomDir;
+
+        yield return new WaitForSeconds(Random.Range(3,10));
+
+        ph.Input = Vector2.zero;
+
+         yield return new WaitForSeconds(Random.Range(0,3));
+
+        currentRoutine =  StartCoroutine(RandomMoveCR());
     }
 
     #endregion

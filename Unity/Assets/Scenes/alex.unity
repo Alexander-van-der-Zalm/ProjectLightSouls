@@ -204,7 +204,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 403476, guid: c2f4d47ed559e8e489cd1856b885ff7e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -19.8999996
       objectReference: {fileID: 0}
     - target: {fileID: 403476, guid: c2f4d47ed559e8e489cd1856b885ff7e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -237,6 +237,10 @@ Prefab:
     - target: {fileID: 110038, guid: c2f4d47ed559e8e489cd1856b885ff7e, type: 2}
       propertyPath: m_Name
       value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 110038, guid: c2f4d47ed559e8e489cd1856b885ff7e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c2f4d47ed559e8e489cd1856b885ff7e, type: 2}
@@ -279,6 +283,22 @@ Prefab:
     - target: {fileID: 469882, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499630, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: MovementMaxSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499630, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: TimeToMaxSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499630, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: DodgeMaxSpeed
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499630, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: DodgeDistance
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
