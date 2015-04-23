@@ -71,4 +71,18 @@ public class AIBehaviorController : MonoBehaviour
     }
 
     #endregion
+
+    internal void PrintBehaviors()
+    {
+        Debug.Log("Behaviors now:");
+        for (int i = 0; i < m_standardBehaviors.Count; i++)
+        {
+            Debug.Log("Std " + m_standardBehaviors[i].Function);
+        }
+
+        for (int i = 0; i < m_tempBehaviors.Count; i++)
+        {
+            Debug.Log("Tmp " + m_tempBehaviors[i].Function);
+        }
+    }
 }

@@ -284,22 +284,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 11499630, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
-      propertyPath: MovementMaxSpeed
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 11499630, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
-      propertyPath: TimeToMaxSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11499630, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
-      propertyPath: DodgeMaxSpeed
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 11499630, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
-      propertyPath: DodgeDistance
-      value: 40
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
   m_IsPrefabParent: 0
@@ -400,6 +384,7 @@ GameObject:
   - 114: {fileID: 1405762229}
   - 114: {fileID: 1405762228}
   - 114: {fileID: 1405762227}
+  - 58: {fileID: 1405762233}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -454,7 +439,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1405762226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 16.3999996, y: 0, z: -10}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -500,3 +485,16 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!58 &1405762233
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1405762226}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: .100000001
