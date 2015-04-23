@@ -40,14 +40,14 @@ public class FrogAI : MonoBehaviour
 
     #region Boss Logic
 
-    private IEnumerator CoreLogicLoop()
-    {
-        // Core logic
-        // Action
-        // Wait
-        // *Rotate 
-        // * = optional
-    }
+    //private IEnumerator CoreLogicLoop()
+    //{
+    //    // Core logic
+    //    // Action
+    //    // Wait
+    //    // *Rotate 
+    //    // * = optional
+    //}
 
     private void StartFunction(string name)
     {
