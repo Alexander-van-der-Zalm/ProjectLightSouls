@@ -26,6 +26,8 @@ public class FrogAI : MonoBehaviour
     private string airborneStr = "AirBorne";
     private string takeOffStr = "TakeOff";
     private string landStr = "Landing";
+    private string attackNrStr = "Attack";
+    private string atackTrStr = "AttackTrigger";
     
 	// Use this for initialization
 	void Start () 
@@ -82,15 +84,19 @@ public class FrogAI : MonoBehaviour
 
         Debug.Log("Action: " + functionName);
 
-        yield return currentBehavior = StartCoroutine(GetFunction(functionName));
+        IEnumerator func = GetFunction(functionName);
 
-        Debug.Log("Action Finished " + functionName);
+        if (func != null)
+            yield return currentBehavior = StartCoroutine(func);
+        else
+            Debug.Log("Func is null");
+        //Debug.Log("Action Finished " + functionName);
         
         // *Rotate 
         // * = optional
         float roll = Random.Range(0.0f, 1.0f);
 
-        Debug.Log("Rotate? " + (roll > RotationChance));
+        //Debug.Log("Rotate? " + (roll > RotationChance));
 
         if(roll > RotationChance)
             currentBehavior = StartCoroutine(RotateCR());
@@ -108,6 +114,8 @@ public class FrogAI : MonoBehaviour
                 return RotateCR();
             case "JumpF":
                 return JumpCR(Vector2.up, 30.0f);
+            case "SwipeNE":
+                return Attack(1);
             case "BackHop":
             case "SideHop":
             case "SideSweep":
@@ -117,6 +125,29 @@ public class FrogAI : MonoBehaviour
             default:                break;
         }
         return null;
+    }
+
+    private IEnumerator Attack(int attackNr)
+    {
+        anim.SetInteger(attackNrStr, attackNr);
+        anim.SetTrigger(atackTrStr);
+        yield return null;
+
+        yield return StartCoroutine(waitTillAnimationChanges(getAnimName()));
+
+        anim.SetInteger(attackNrStr, 0);
+    }
+
+    private IEnumerator waitTillAnimationChanges(string originalAnimName)
+    {
+        string curName = originalAnimName;
+
+        while (originalAnimName == curName)
+        {
+            curName = getAnimName();
+            yield return null;
+        }
+        Debug.Log(string.Format("Animation changed: {0} to {1}", originalAnimName, curName));
     }
 
     #region Shared Functions
@@ -130,26 +161,17 @@ public class FrogAI : MonoBehaviour
         
         anim.SetBool(airborneStr, true);
         anim.SetTrigger(takeOffStr);
+        Debug.Log("0 " + getAnimName());
 
-        yield return null;
+        yield return StartCoroutine(waitForAnimation("Boss_Komba_JumpF_TakeOff"));
 
-        // Chargeup
-        // Stay charging til animation is finished
-        string animName = getAnimName();
-        string curName = animName;
+        //// Chargeup
+        //// Stay charging til animation is finished
 
-        Debug.Log("1 " +animName);
-
-        while (animName == curName)
-        {
-            curName = getAnimName();
-            yield return null;
-        }
+        yield return StartCoroutine(waitForAnimation("Boss_Komba_JumpF_Airborne"));
 
         // Airborne
         // Stay airborne till dodge move has finished
-        animName = curName;
-        Debug.Log("2 " + animName);
 
         // Trigger dodge
         ph.Dodge(jumpDirection, jumpDistance);
@@ -166,10 +188,20 @@ public class FrogAI : MonoBehaviour
         anim.SetTrigger(landStr);
         anim.SetBool(airborneStr, false);
 
-        yield return null;
+        //yield return null;
 
-        animName = getAnimName();
-        Debug.Log("3 " + animName);
+        //Debug.Log("3 " + getAnimName());
+    }
+
+    private IEnumerator waitForAnimation(string animToStop)
+    {
+        int i = 0;
+        while(animToStop != getAnimName())
+        {
+            i++;
+            yield return null;
+        }
+        Debug.Log("Stopped looking for " + animToStop + "  " + i);
     }
 
     private void MoveCR()
@@ -208,9 +240,9 @@ public class FrogAI : MonoBehaviour
 
     private IEnumerator Idle()
     {
-        Debug.Log("IDLE 1");
+        //Debug.Log("IDLE 1");
         yield return new WaitForSeconds(IdleTime);
-        Debug.Log("IDLE 2");
+        //Debug.Log("IDLE 2");
     }
 
     private void Rotate(float maxTime, Transform target = null)
