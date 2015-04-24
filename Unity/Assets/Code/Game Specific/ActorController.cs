@@ -20,7 +20,7 @@ public class ActorController : MonoBehaviour
 
     public void Dodge(Vector2 dir)
     {
-        pc.Dodge(dir);
+        pc.Dodge(dir, pc.DodgeDistance);
         // Change color temp
     }
 

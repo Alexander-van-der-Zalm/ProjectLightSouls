@@ -14,12 +14,18 @@ public class FrogAI : MonoBehaviour
     [Range(0.0f,1.0f)]
     public float RotationChance;
 
+    public bool animationPlaying;
+    public string animName;
+
     private AIBehaviorController AIController;
     private PhysicsController ph;
     private Animator anim;
 
     private Coroutine update;
     private Coroutine currentBehavior;
+    private string airborneStr = "AirBorne";
+    private string takeOffStr = "TakeOff";
+    private string landStr = "Landing";
     
 	// Use this for initialization
 	void Start () 
@@ -46,8 +52,22 @@ public class FrogAI : MonoBehaviour
             AIController.PrintBehaviors();
         }
 
+        //animNames();
+
+        animName = getAnimName();
+
         AIController.ClearBehaviors();
 	}
+
+    private string getAnimName()
+    {
+        AnimatorClipInfo[] clipInfos = anim.GetCurrentAnimatorClipInfo(0);
+        if (clipInfos.Length > 0)
+            return clipInfos[0].clip.name;
+        else
+            return "";
+        //anim.GetCurrentAnimationClipState(0).ToString();
+    }
 
 
 
@@ -86,7 +106,8 @@ public class FrogAI : MonoBehaviour
                 return Idle();
             case "Rotate":
                 return RotateCR();
-            case "FrontHop":
+            case "JumpF":
+                return JumpCR(Vector2.up, 30.0f);
             case "BackHop":
             case "SideHop":
             case "SideSweep":
@@ -100,9 +121,55 @@ public class FrogAI : MonoBehaviour
 
     #region Shared Functions
 
-    private void JumpCR()
+    private IEnumerator JumpCR(Vector2 jumpDirection, float jumpDistance)
     {
+        // Find jump target
+        // TakeOff
+        // Trigger physics.dodge
+        // 
+        
+        anim.SetBool(airborneStr, true);
+        anim.SetTrigger(takeOffStr);
 
+        yield return null;
+
+        // Chargeup
+        // Stay charging til animation is finished
+        string animName = getAnimName();
+        string curName = animName;
+
+        Debug.Log("1 " +animName);
+
+        while (animName == curName)
+        {
+            curName = getAnimName();
+            yield return null;
+        }
+
+        // Airborne
+        // Stay airborne till dodge move has finished
+        animName = curName;
+        Debug.Log("2 " + animName);
+
+        // Trigger dodge
+        ph.Dodge(jumpDirection, jumpDistance);
+
+        yield return null;
+
+        // for as long as the physics controller sais its airborne
+        while(ph.Airborne)
+        {
+            yield return null;
+        }
+
+        // Landing
+        anim.SetTrigger(landStr);
+        anim.SetBool(airborneStr, false);
+
+        yield return null;
+
+        animName = getAnimName();
+        Debug.Log("3 " + animName);
     }
 
     private void MoveCR()
@@ -144,7 +211,6 @@ public class FrogAI : MonoBehaviour
         Debug.Log("IDLE 1");
         yield return new WaitForSeconds(IdleTime);
         Debug.Log("IDLE 2");
-        yield break;
     }
 
     private void Rotate(float maxTime, Transform target = null)
@@ -154,7 +220,7 @@ public class FrogAI : MonoBehaviour
 
     private void BackHop(Vector2 target)
     {
-
+        
     }
 
     private void SideHop(Vector2 target)

@@ -463,6 +463,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11430364, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: StandardBehaviors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 469882, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -494,6 +498,38 @@ Prefab:
     - target: {fileID: 469882, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430364, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: IdleTime
+      value: 1.20000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430364, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: RotationChance
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430364, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: StandardBehaviors.Array.data[1].Behavior.Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430364, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: StandardBehaviors.Array.data[1].Behavior.Type
+      value: Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430364, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: StandardBehaviors.Array.data[1].Behavior.Function
+      value: JumpF
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430364, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: StandardBehaviors.Array.data[2].Behavior.Weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430364, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: StandardBehaviors.Array.data[2].Behavior.Type
+      value: Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430364, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: StandardBehaviors.Array.data[2].Behavior.Function
+      value: JumpF
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
