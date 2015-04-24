@@ -1921,7 +1921,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5817680cc13f4e43b7e7a4ccba5874f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviors: []
+  behaviors:
+  - Tag: 
+    AnimState: 
+    Behavior:
+      Weight: 1
+      Type: Attack
+      Function: RLowSwipe
   controller: {fileID: 11475254}
 --- !u!114 &11430364
 MonoBehaviour:

@@ -25,13 +25,16 @@ public class FrogAI : MonoBehaviour
         for (int i = 0; i < StandardBehaviors.Count; i++)
             AIController.AddBehavior(StandardBehaviors[i].Behavior, true);
 
-        currentRoutine = StartCoroutine(RandomMoveCR());
+        //currentRoutine = StartCoroutine(RandomMoveCR());
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () 
     {
-
+        if(Input.GetKeyUp(KeyCode.I))
+        {
+            AIController.PrintBehaviors();
+        }
 
         AIController.ClearBehaviors();
 	}
@@ -44,6 +47,8 @@ public class FrogAI : MonoBehaviour
     //{
     //    // Core logic
     //    // Action
+    //    // Find a new action to do
+
     //    // Wait
     //    // *Rotate 
     //    // * = optional
@@ -88,17 +93,17 @@ public class FrogAI : MonoBehaviour
         Vector2 randomDir = new Vector2();
         while(randomDir.magnitude == 0)
         {
-            randomDir = new Vector2(Random.Range(-1,1),Random.Range(-1,1));
+            randomDir = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
         }
         randomDir.Normalize();
 
         ph.Input = randomDir;
 
-        yield return new WaitForSeconds(Random.Range(3,10));
+        yield return new WaitForSeconds(Random.Range(2.0f, 5.0f));
 
         ph.Input = Vector2.zero;
 
-         yield return new WaitForSeconds(Random.Range(0,3));
+        yield return new WaitForSeconds(Random.Range(0.0f, 3.0f));
 
         currentRoutine =  StartCoroutine(RandomMoveCR());
     }
