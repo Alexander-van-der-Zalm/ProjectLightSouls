@@ -53,13 +53,13 @@ public class AIBehaviorController : MonoBehaviour
 
         float totalWeight = combined.Sum(a => a.Weight);
 
-        float randomValue = nonRandomValue != -1 ? nonRandomValue : Random.Range(0, totalWeight);
+        float randomValue = nonRandomValue != -1 ? nonRandomValue : Random.Range(0.0f, totalWeight);
 
         float curValue = 0;
         for(int i = 0; i < combined.Count; i++)
         {
             curValue += combined[i].Weight;
-            if(curValue >= randomValue)
+            if(curValue > randomValue)
             {
                 return combined[i].Function;
             }

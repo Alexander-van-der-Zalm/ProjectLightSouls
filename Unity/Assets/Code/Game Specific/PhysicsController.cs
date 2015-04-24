@@ -18,7 +18,7 @@ public class PhysicsController : MonoBehaviour
     private Rigidbody2D rb;
 
     private Vector2 airSpeed;
-    private bool airborn = false;
+    public bool Airborne = false;
 
     private float speed;
 
@@ -42,7 +42,7 @@ public class PhysicsController : MonoBehaviour
         Vector2 a = Vector2.zero;
         Vector2 friction = Vector2.zero;
 
-        if (!airborn)
+        if (!Airborne)
         {
             a = Input * m_accel;
             friction = v * m_friction;
@@ -63,9 +63,9 @@ public class PhysicsController : MonoBehaviour
 
     Coroutine dodgeCR;
 
-    public void Dodge(Vector2 direction)
+    public void Dodge(Vector2 direction, float distance)
     {
-        float time = DodgeDistance/DodgeMaxSpeed;
+        float time = distance / DodgeMaxSpeed;
 
         dodgeCR = StartCoroutine(DodgeCR(direction, DodgeMaxSpeed, time));
     }
@@ -73,18 +73,18 @@ public class PhysicsController : MonoBehaviour
     public void StopDodge()
     {
         StopCoroutine(dodgeCR);
-        airborn = false;
+        Airborne = false;
     }
 
     private IEnumerator DodgeCR(Vector2 direction, float speed, float time)
     {
-        airborn = true;
+        Airborne = true;
 
         airSpeed = direction.normalized * speed;
 
         yield return new WaitForSeconds(time);
 
-        airborn = false;
+        Airborne = false;
     }
 
     #region Debug

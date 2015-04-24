@@ -5,16 +5,30 @@ using System.Collections.Generic;
 [RequireComponent(typeof(AIBehaviorController), typeof(PhysicsController), typeof(Animator))]
 public class FrogAI : MonoBehaviour 
 {
-    
     public List<AIBehaviorTrigger> StandardBehaviors;
     // Think about interupting?
+
+    //public float MinWait;
+    //public float MaxWait;
+    public float IdleTime;
+    [Range(0.0f,1.0f)]
+    public float RotationChance;
+
+    public bool animationPlaying;
+    public string animName;
 
     private AIBehaviorController AIController;
     private PhysicsController ph;
     private Animator anim;
 
-    private Coroutine currentRoutine;
-
+    private Coroutine update;
+    private Coroutine currentBehavior;
+    private string airborneStr = "AirBorne";
+    private string takeOffStr = "TakeOff";
+    private string landStr = "Landing";
+    private string attackNrStr = "Attack";
+    private string atackTrStr = "AttackTrigger";
+    
 	// Use this for initialization
 	void Start () 
     {
@@ -22,8 +36,12 @@ public class FrogAI : MonoBehaviour
         ph = GetComponent<PhysicsController>();
         anim = GetComponent<Animator>();
 
+        // Add all the standard behaviors to the functionpool
         for (int i = 0; i < StandardBehaviors.Count; i++)
             AIController.AddBehavior(StandardBehaviors[i].Behavior, true);
+
+        // The core behavior loop
+        update = StartCoroutine(CoreLogicLoop());
 
         //currentRoutine = StartCoroutine(RandomMoveCR());
 	}
@@ -36,31 +54,68 @@ public class FrogAI : MonoBehaviour
             AIController.PrintBehaviors();
         }
 
+        //animNames();
+
+        animName = getAnimName();
+
         AIController.ClearBehaviors();
 	}
+
+    private string getAnimName()
+    {
+        AnimatorClipInfo[] clipInfos = anim.GetCurrentAnimatorClipInfo(0);
+        if (clipInfos.Length > 0)
+            return clipInfos[0].clip.name;
+        else
+            return "";
+        //anim.GetCurrentAnimationClipState(0).ToString();
+    }
 
 
 
     #region Boss Logic
 
-    //private IEnumerator CoreLogicLoop()
-    //{
-    //    // Core logic
-    //    // Action
-    //    // Find a new action to do
+    private IEnumerator CoreLogicLoop()
+    {
+        // Core logic
+        // Action
+        // Find a new action to do
+        string functionName = AIController.FindNewBehavior();
 
-    //    // Wait
-    //    // *Rotate 
-    //    // * = optional
-    //}
+        Debug.Log("Action: " + functionName);
 
-    private void StartFunction(string name)
+        IEnumerator func = GetFunction(functionName);
+
+        if (func != null)
+            yield return currentBehavior = StartCoroutine(func);
+        else
+            Debug.Log("Func is null");
+        //Debug.Log("Action Finished " + functionName);
+        
+        // *Rotate 
+        // * = optional
+        float roll = Random.Range(0.0f, 1.0f);
+
+        //Debug.Log("Rotate? " + (roll > RotationChance));
+
+        if(roll > RotationChance)
+            currentBehavior = StartCoroutine(RotateCR());
+
+        update = StartCoroutine(CoreLogicLoop());
+    }
+
+    private IEnumerator GetFunction(string name)
     {
         switch(name)
         {
-            case "Idle":            
+            case "Idle":
+                return Idle();
             case "Rotate":
-            case "FrontHop":
+                return RotateCR();
+            case "JumpF":
+                return JumpCR(Vector2.up, 30.0f);
+            case "SwipeNE":
+                return Attack(1);
             case "BackHop":
             case "SideHop":
             case "SideSweep":
@@ -69,13 +124,84 @@ public class FrogAI : MonoBehaviour
             case "Secrete":
             default:                break;
         }
+        return null;
+    }
+
+    private IEnumerator Attack(int attackNr)
+    {
+        anim.SetInteger(attackNrStr, attackNr);
+        anim.SetTrigger(atackTrStr);
+        yield return null;
+
+        yield return StartCoroutine(waitTillAnimationChanges(getAnimName()));
+
+        anim.SetInteger(attackNrStr, 0);
+    }
+
+    private IEnumerator waitTillAnimationChanges(string originalAnimName)
+    {
+        string curName = originalAnimName;
+
+        while (originalAnimName == curName)
+        {
+            curName = getAnimName();
+            yield return null;
+        }
+        Debug.Log(string.Format("Animation changed: {0} to {1}", originalAnimName, curName));
     }
 
     #region Shared Functions
 
-    private void JumpCR()
+    private IEnumerator JumpCR(Vector2 jumpDirection, float jumpDistance)
     {
+        // Find jump target
+        // TakeOff
+        // Trigger physics.dodge
+        // 
+        
+        anim.SetBool(airborneStr, true);
+        anim.SetTrigger(takeOffStr);
+        Debug.Log("0 " + getAnimName());
 
+        yield return StartCoroutine(waitForAnimation("Boss_Komba_JumpF_TakeOff"));
+
+        //// Chargeup
+        //// Stay charging til animation is finished
+
+        yield return StartCoroutine(waitForAnimation("Boss_Komba_JumpF_Airborne"));
+
+        // Airborne
+        // Stay airborne till dodge move has finished
+
+        // Trigger dodge
+        ph.Dodge(jumpDirection, jumpDistance);
+
+        yield return null;
+
+        // for as long as the physics controller sais its airborne
+        while(ph.Airborne)
+        {
+            yield return null;
+        }
+
+        // Landing
+        anim.SetTrigger(landStr);
+        anim.SetBool(airborneStr, false);
+
+        //yield return null;
+
+        //Debug.Log("3 " + getAnimName());
+    }
+
+    private IEnumerator waitForAnimation(string animToStop)
+    {
+        int i = 0;
+        while(animToStop != getAnimName())
+        {
+            i++;
+            yield return null;
+        }
+        Debug.Log("Stopped looking for " + animToStop + "  " + i);
     }
 
     private void MoveCR()
@@ -83,9 +209,9 @@ public class FrogAI : MonoBehaviour
 
     }
 
-    private void RotateCR()
+    private IEnumerator RotateCR()
     {
-
+        yield return null;
     }
 
     private IEnumerator RandomMoveCR()
@@ -105,16 +231,18 @@ public class FrogAI : MonoBehaviour
 
         yield return new WaitForSeconds(Random.Range(0.0f, 3.0f));
 
-        currentRoutine =  StartCoroutine(RandomMoveCR());
+        currentBehavior =  StartCoroutine(RandomMoveCR());
     }
 
     #endregion
 
     #region AnimationFunctions
 
-    private void Idle(float time)
+    private IEnumerator Idle()
     {
-
+        //Debug.Log("IDLE 1");
+        yield return new WaitForSeconds(IdleTime);
+        //Debug.Log("IDLE 2");
     }
 
     private void Rotate(float maxTime, Transform target = null)
@@ -124,7 +252,7 @@ public class FrogAI : MonoBehaviour
 
     private void BackHop(Vector2 target)
     {
-
+        
     }
 
     private void SideHop(Vector2 target)
