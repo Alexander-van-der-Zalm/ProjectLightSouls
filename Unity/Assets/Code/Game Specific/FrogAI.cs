@@ -5,16 +5,22 @@ using System.Collections.Generic;
 [RequireComponent(typeof(AIBehaviorController), typeof(PhysicsController), typeof(Animator))]
 public class FrogAI : MonoBehaviour 
 {
-    
     public List<AIBehaviorTrigger> StandardBehaviors;
     // Think about interupting?
+
+    //public float MinWait;
+    //public float MaxWait;
+    public float IdleTime;
+    [Range(0.0f,1.0f)]
+    public float RotationChance;
 
     private AIBehaviorController AIController;
     private PhysicsController ph;
     private Animator anim;
 
-    private Coroutine currentRoutine;
-
+    private Coroutine update;
+    private Coroutine currentBehavior;
+    
 	// Use this for initialization
 	void Start () 
     {
@@ -22,8 +28,12 @@ public class FrogAI : MonoBehaviour
         ph = GetComponent<PhysicsController>();
         anim = GetComponent<Animator>();
 
+        // Add all the standard behaviors to the functionpool
         for (int i = 0; i < StandardBehaviors.Count; i++)
             AIController.AddBehavior(StandardBehaviors[i].Behavior, true);
+
+        // The core behavior loop
+        update = StartCoroutine(CoreLogicLoop());
 
         //currentRoutine = StartCoroutine(RandomMoveCR());
 	}
@@ -43,23 +53,39 @@ public class FrogAI : MonoBehaviour
 
     #region Boss Logic
 
-    //private IEnumerator CoreLogicLoop()
-    //{
-    //    // Core logic
-    //    // Action
-    //    // Find a new action to do
+    private IEnumerator CoreLogicLoop()
+    {
+        // Core logic
+        // Action
+        // Find a new action to do
+        string functionName = AIController.FindNewBehavior();
 
-    //    // Wait
-    //    // *Rotate 
-    //    // * = optional
-    //}
+        Debug.Log("Action: " + functionName);
 
-    private void StartFunction(string name)
+        yield return currentBehavior = StartCoroutine(GetFunction(functionName));
+
+        Debug.Log("Action Finished " + functionName);
+        
+        // *Rotate 
+        // * = optional
+        float roll = Random.Range(0.0f, 1.0f);
+
+        Debug.Log("Rotate? " + (roll > RotationChance));
+
+        if(roll > RotationChance)
+            currentBehavior = StartCoroutine(RotateCR());
+
+        update = StartCoroutine(CoreLogicLoop());
+    }
+
+    private IEnumerator GetFunction(string name)
     {
         switch(name)
         {
-            case "Idle":            
+            case "Idle":
+                return Idle();
             case "Rotate":
+                return RotateCR();
             case "FrontHop":
             case "BackHop":
             case "SideHop":
@@ -69,6 +95,7 @@ public class FrogAI : MonoBehaviour
             case "Secrete":
             default:                break;
         }
+        return null;
     }
 
     #region Shared Functions
@@ -83,9 +110,9 @@ public class FrogAI : MonoBehaviour
 
     }
 
-    private void RotateCR()
+    private IEnumerator RotateCR()
     {
-
+        yield return null;
     }
 
     private IEnumerator RandomMoveCR()
@@ -105,16 +132,19 @@ public class FrogAI : MonoBehaviour
 
         yield return new WaitForSeconds(Random.Range(0.0f, 3.0f));
 
-        currentRoutine =  StartCoroutine(RandomMoveCR());
+        currentBehavior =  StartCoroutine(RandomMoveCR());
     }
 
     #endregion
 
     #region AnimationFunctions
 
-    private void Idle(float time)
+    private IEnumerator Idle()
     {
-
+        Debug.Log("IDLE 1");
+        yield return new WaitForSeconds(IdleTime);
+        Debug.Log("IDLE 2");
+        yield break;
     }
 
     private void Rotate(float maxTime, Transform target = null)

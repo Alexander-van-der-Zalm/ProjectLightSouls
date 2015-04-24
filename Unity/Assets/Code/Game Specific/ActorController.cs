@@ -21,6 +21,7 @@ public class ActorController : MonoBehaviour
     public void Dodge(Vector2 dir)
     {
         pc.Dodge(dir);
+        // Change color temp
     }
 
     public void Heal()
