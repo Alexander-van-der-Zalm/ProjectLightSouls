@@ -944,6 +944,7 @@ MonoBehaviour:
   DodgeMaxSpeed: 0
   DodgeDistance: 0
   Input: {x: 0, y: 0}
+  Airborne: 0
 --- !u!212 &21207150
 SpriteRenderer:
   m_ObjectHideFlags: 1
