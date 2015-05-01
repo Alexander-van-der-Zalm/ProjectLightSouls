@@ -15,7 +15,7 @@ public class Puppet2D_GlobalControl : MonoBehaviour {
 
     [HideInInspector]
     public List<SpriteRenderer> _Controls = new List<SpriteRenderer>();
-    [HideInInspector]
+	[HideInInspector]
     public List<SpriteRenderer> _Bones = new List<SpriteRenderer>();
     [HideInInspector]
     public List<SpriteRenderer> _FFDControls = new List<SpriteRenderer>();

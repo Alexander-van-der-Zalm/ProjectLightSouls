@@ -78,6 +78,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 413614}
   - 114: {fileID: 11426516}
+  - 114: {fileID: 11475824}
   m_Layer: 0
   m_Name: UI Functions
   m_TagString: Untagged
@@ -1170,6 +1171,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Try again
+--- !u!114 &11475824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281dbe4da87f8fb42aedbaff49b1cd53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Win: {fileID: 163912}
+  GameOver: {fileID: 157388}
+  Game: {fileID: 143548}
+  StartGame: {fileID: 142856}
 --- !u!114 &11476180
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -87,6 +87,100 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &727432065
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 473360, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 473360, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 473360, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 473360, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: .710396886
+      objectReference: {fileID: 0}
+    - target: {fileID: 473360, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: .703801334
+      objectReference: {fileID: 0}
+    - target: {fileID: 473360, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -7.3593327e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 473360, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -1.57203772e-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 473360, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 444182, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -.972903192
+      objectReference: {fileID: 0}
+    - target: {fileID: 444182, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: .23121275
+      objectReference: {fileID: 0}
+    - target: {fileID: 444182, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 5.50454828e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 444182, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 6.364521e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 167472, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_Name
+      value: Komba the Bosh Frog
+      objectReference: {fileID: 0}
+    - target: {fileID: 464000, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -.269839257
+      objectReference: {fileID: 0}
+    - target: {fileID: 464000, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -5.84372408e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 409194, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 1.39014517e-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 409194, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 7.79619995e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 409194, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -.937526524
+      objectReference: {fileID: 0}
+    - target: {fileID: 462576, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 5.45827135e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 462576, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -.0766565576
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445168, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1178832927
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +342,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22478042, guid: 709713a645f0f364485dab3701c5f49a, type: 2}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 140476, guid: 709713a645f0f364485dab3701c5f49a, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

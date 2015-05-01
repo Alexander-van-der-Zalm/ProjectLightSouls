@@ -6,9 +6,9 @@ using System.Linq;
 [System.Serializable]
 public class AIBehaviorController : MonoBehaviour                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 {
-    [SerializeField]
+    [SerializeField,HideInInspector]
     private List<AIBehavior> m_tempBehaviors =  new List<AIBehavior>();
-    [SerializeField]
+	[SerializeField,HideInInspector]
     private List<AIBehavior> m_standardBehaviors = new List<AIBehavior>();
 
     #region Add & Clear
