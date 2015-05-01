@@ -128,23 +128,63 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 444182, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -.972903192
+      value: -.972903311
       objectReference: {fileID: 0}
     - target: {fileID: 444182, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .23121275
+      value: .231212556
       objectReference: {fileID: 0}
     - target: {fileID: 444182, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 5.50454828e-08
+      value: 4.16746744e-08
       objectReference: {fileID: 0}
     - target: {fileID: 444182, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 6.364521e-08
+      value: 2.23099867e-08
       objectReference: {fileID: 0}
     - target: {fileID: 167472, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
       propertyPath: m_Name
       value: Komba the Bosh Frog
+      objectReference: {fileID: 0}
+    - target: {fileID: 484326, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -.0555360876
+      objectReference: {fileID: 0}
+    - target: {fileID: 484326, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -1.25527793e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 498374, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 9.17624021e-09
+      objectReference: {fileID: 0}
+    - target: {fileID: 498374, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 4.17377422e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 498374, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .847081661
+      objectReference: {fileID: 0}
+    - target: {fileID: 498374, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .531462789
+      objectReference: {fileID: 0}
+    - target: {fileID: 467882, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -1.41470068e-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 467882, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -3.91332406e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 467882, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -.225968093
+      objectReference: {fileID: 0}
+    - target: {fileID: 467882, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .974134743
       objectReference: {fileID: 0}
     - target: {fileID: 464000, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -174,9 +214,13 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -.0766565576
       objectReference: {fileID: 0}
-    - target: {fileID: 11445168, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 484326, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -.998456717
+      objectReference: {fileID: 0}
+    - target: {fileID: 484326, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1.24785942e-07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4e58b5e105947b45b052615f7c5e24a, type: 2}

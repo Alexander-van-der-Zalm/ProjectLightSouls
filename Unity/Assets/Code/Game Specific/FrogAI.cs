@@ -159,7 +159,7 @@ public class FrogAI : MonoBehaviour
         // Trigger physics.dodge
         // 
         
-        anim.SetBool(airborneStr, true);
+        //anim.SetBool(airborneStr, true);
         anim.SetTrigger(takeOffStr);
         Debug.Log("0 " + getAnimName());
 
@@ -186,8 +186,10 @@ public class FrogAI : MonoBehaviour
 
         // Landing
         anim.SetTrigger(landStr);
-        anim.SetBool(airborneStr, false);
+        //anim.SetBool(airborneStr, false);
 
+		yield return StartCoroutine(waitForAnimation("Boss_Komba_JumpF_Land"));
+		yield return StartCoroutine(waitForAnimationToFinish("Boss_Komba_JumpF_Land"));
         //yield return null;
 
         //Debug.Log("3 " + getAnimName());
@@ -203,6 +205,17 @@ public class FrogAI : MonoBehaviour
         }
         Debug.Log("Stopped looking for " + animToStop + "  " + i);
     }
+
+	private IEnumerator waitForAnimationToFinish(string animToStop)
+	{
+		int i = 0;
+		while(animToStop == getAnimName())
+		{
+			i++;
+			yield return null;
+		}
+		Debug.Log("Finished " + animToStop + " after " + i);
+	}
 
     private void MoveCR()
     {
