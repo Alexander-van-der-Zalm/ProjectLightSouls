@@ -1,19 +1,28 @@
 fileFormatVersion: 2
 guid: 3249934016713a543beff52ee7325202
-timeCreated: 1429795534
+timeCreated: 1430399853
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Arm_Lower
-    21300002: Back
-    21300004: Arm_Upper
+    21300000: tx_arm_lower_L
+    21300002: tx_back
+    21300004: tx_head
     21300006: TxToadPH_3
     21300008: Head
-    21300010: Flank
-    21300012: Leg_Lower
-    21300014: Foot
+    21300010: tx_flank_L
+    21300012: tx_leg_lower_L
+    21300014: tx_foot_L
     21300016: TxToadPH_8
-    21300018: LegUpper
+    21300018: tx_leg_upper_L
+    21300020: tx_arm_upper_R
+    21300022: tx_flank_R
+    21300024: tx_arm_lower_R
+    21300026: tx_arm_upper_L
+    21300028: tx_leg_upper_R
+    21300030: tx_leg_lower_R
+    21300032: tx_foot_R
+    21300034: tx_tongue_base
+    21300036: tx_tongue_tip
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -59,103 +68,163 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Arm_Lower
+    - name: tx_arm_lower_L
       rect:
         serializedVersion: 2
-        x: 13
-        y: 502
-        width: 186
-        height: 92
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Back
-      rect:
-        serializedVersion: 2
-        x: 230
-        y: 270
+        x: 17
+        y: 698
         width: 197
-        height: 310
+        height: 98
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Arm_Upper
+    - name: tx_back
       rect:
         serializedVersion: 2
-        x: 23
-        y: 420
-        width: 169
-        height: 69
+        x: 229
+        y: 422
+        width: 197
+        height: 311
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: TxToadPH_3
+    - name: tx_head
       rect:
         serializedVersion: 2
-        x: 489
-        y: 402
-        width: 40
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Head
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 250
-        width: 189
-        height: 148
+        x: 28
+        y: 411
+        width: 190
+        height: 151
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Flank
+    - name: tx_flank_L
       rect:
         serializedVersion: 2
-        x: 375
-        y: 51
-        width: 146
-        height: 216
+        x: 403
+        y: 149
+        width: 138
+        height: 236
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Leg_Lower
+    - name: tx_leg_lower_L
       rect:
         serializedVersion: 2
         x: 30
-        y: 2
-        width: 84
+        y: 136
+        width: 87
+        height: 240
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tx_foot_L
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 182
+        width: 87
+        height: 169
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tx_leg_upper_L
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 173
+        width: 141
+        height: 206
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tx_arm_upper_R
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 663
+        width: 134
+        height: 73
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tx_flank_R
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 408
+        width: 137
+        height: 241
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tx_arm_lower_R
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 696
+        width: 207
+        height: 101
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tx_arm_upper_L
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 594
+        width: 141
+        height: 57
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tx_leg_upper_R
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 423
+        width: 133
+        height: 205
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tx_leg_lower_R
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 149
+        width: 88
         height: 238
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Foot
+    - name: tx_foot_R
       rect:
         serializedVersion: 2
-        x: 138
-        y: 48
-        width: 70
-        height: 170
+        x: 698
+        y: 191
+        width: 80
+        height: 168
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: TxToadPH_8
+    - name: tx_tongue_base
       rect:
         serializedVersion: 2
-        x: 381
-        y: 210
-        width: 4
-        height: 6
+        x: 45
+        y: 64
+        width: 35
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: LegUpper
+    - name: tx_tongue_tip
       rect:
         serializedVersion: 2
-        x: 224
-        y: 45
-        width: 142
-        height: 210
+        x: 115
+        y: 64
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
