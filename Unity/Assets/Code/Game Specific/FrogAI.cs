@@ -20,6 +20,7 @@ public class FrogAI : MonoBehaviour
     private AIBehaviorController AIController;
     private PhysicsController ph;
     private Animator anim;
+	private Transform tr;
 
     private Coroutine update;
     private Coroutine currentBehavior;
@@ -35,6 +36,7 @@ public class FrogAI : MonoBehaviour
         AIController = GetComponent<AIBehaviorController>();
         ph = GetComponent<PhysicsController>();
         anim = GetComponent<Animator>();
+		tr = GetComponent<Transform>();
 
         // Add all the standard behaviors to the functionpool
         for (int i = 0; i < StandardBehaviors.Count; i++)
@@ -113,7 +115,9 @@ public class FrogAI : MonoBehaviour
             case "Rotate":
                 return RotateCR();
             case "JumpF":
-                return JumpCR(Vector2.up, 30.0f);
+				Vector2 randomDir = RandomDir();
+				// Change to tr.forward
+				return JumpCR(randomDir, 30.0f);
             case "SwipeNE":
                 return Attack(1);
             case "BackHop":
@@ -168,7 +172,7 @@ public class FrogAI : MonoBehaviour
         //// Chargeup
         //// Stay charging til animation is finished
 
-		yield return StartCoroutine(waitForAnimation(id+"F_Airborne"));
+		yield return StartCoroutine(waitForAnimation(id+"_Airborne"));
 
         // Airborne
         // Stay airborne till dodge move has finished
@@ -224,14 +228,20 @@ public class FrogAI : MonoBehaviour
         yield return null;
     }
 
+	private Vector2 RandomDir()
+	{
+		Vector2 randomDir = new Vector2();
+		while(randomDir.magnitude == 0)
+		{
+			randomDir = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+		}
+		randomDir.Normalize();
+		return randomDir;
+	}
+
     private IEnumerator RandomMoveCR()
     {
-        Vector2 randomDir = new Vector2();
-        while(randomDir.magnitude == 0)
-        {
-            randomDir = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
-        }
-        randomDir.Normalize();
+		Vector2 randomDir = RandomDir();
 
         ph.Input = randomDir;
 
