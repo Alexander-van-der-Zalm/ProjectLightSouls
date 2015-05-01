@@ -117,7 +117,7 @@ public class FrogAI : MonoBehaviour
             case "JumpF":
 				Vector2 randomDir = RandomDir();
 				// Change to tr.forward
-				return JumpCR(randomDir, 30.0f);
+				return JumpCR(Vector2.up, 30.0f);
             case "SwipeNE":
                 return Attack(1);
             case "BackHop":
