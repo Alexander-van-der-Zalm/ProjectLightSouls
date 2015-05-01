@@ -15,7 +15,7 @@ public class LockWorldPos : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void LateUpdate () 
 	{
 		if(!LockWorldPosition)
 			pos = tr.position;
