@@ -152,7 +152,7 @@ public class FrogAI : MonoBehaviour
 
     #region Shared Functions
 
-    private IEnumerator JumpCR(Vector2 jumpDirection, float jumpDistance)
+	private IEnumerator JumpCR(Vector2 jumpDirection, float jumpDistance, string id = "Boss_Komba_JumpF")
     {
         // Find jump target
         // TakeOff
@@ -163,12 +163,12 @@ public class FrogAI : MonoBehaviour
         anim.SetTrigger(takeOffStr);
         Debug.Log("0 " + getAnimName());
 
-        yield return StartCoroutine(waitForAnimation("Boss_Komba_JumpF_TakeOff"));
+		yield return StartCoroutine(waitForAnimation(id+"_TakeOff"));
 
         //// Chargeup
         //// Stay charging til animation is finished
 
-        yield return StartCoroutine(waitForAnimation("Boss_Komba_JumpF_Airborne"));
+		yield return StartCoroutine(waitForAnimation(id+"F_Airborne"));
 
         // Airborne
         // Stay airborne till dodge move has finished
@@ -188,11 +188,8 @@ public class FrogAI : MonoBehaviour
         anim.SetTrigger(landStr);
         //anim.SetBool(airborneStr, false);
 
-		yield return StartCoroutine(waitForAnimation("Boss_Komba_JumpF_Land"));
-		yield return StartCoroutine(waitForAnimationToFinish("Boss_Komba_JumpF_Land"));
-        //yield return null;
-
-        //Debug.Log("3 " + getAnimName());
+		yield return StartCoroutine(waitForAnimation(id+"_Land"));
+		yield return StartCoroutine(waitForAnimationToFinish(id+"_Land"));
     }
 
     private IEnumerator waitForAnimation(string animToStop)
