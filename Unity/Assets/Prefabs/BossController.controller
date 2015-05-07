@@ -683,7 +683,7 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_Motion: {fileID: 7400000, guid: 54b1fe173ea491a4bb08fc36e6171a8c, type: 2}
+  m_Motion: {fileID: 7400000, guid: a7a80185272097641a51043ac1605418, type: 2}
   m_Tag: 
 --- !u!1102 &110275082
 AnimatorState:
@@ -964,7 +964,10 @@ AnimatorStateMachine:
   m_EntryTransitions:
   - {fileID: 110980376}
   - {fileID: 110988278}
-  m_StateMachineTransitions: {}
+  m_StateMachineTransitions:
+    data:
+      first: {fileID: 110721048}
+      second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 72, y: 12, z: 0}
   m_EntryPosition: {x: 24, y: 120, z: 0}
