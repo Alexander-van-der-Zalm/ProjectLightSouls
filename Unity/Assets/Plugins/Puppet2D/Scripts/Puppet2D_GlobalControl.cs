@@ -244,7 +244,6 @@ public class Puppet2D_GlobalControl : MonoBehaviour {
     }
 	public void Run () 
 	{
-
         foreach(Puppet2D_SplineControl spline in _SplineControls)
         {
             if(spline)
