@@ -69,23 +69,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &107350
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 413614}
-  - 114: {fileID: 11426516}
-  - 114: {fileID: 11475824}
-  m_Layer: 0
-  m_Name: UI Functions
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &113316
 GameObject:
   m_ObjectHideFlags: 1
@@ -167,6 +150,8 @@ GameObject:
   - 223: {fileID: 22326826}
   - 114: {fileID: 11415192}
   - 114: {fileID: 11414978}
+  - 114: {fileID: 11490210}
+  - 114: {fileID: 11422078}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -188,7 +173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &143548
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,18 +440,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 22478042}
   m_RootOrder: 5
---- !u!4 &413614
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 107350}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.99511719, y: -49.1682129, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 22478042}
-  m_RootOrder: 6
 --- !u!4 &426140
 Transform:
   m_ObjectHideFlags: 1
@@ -706,7 +679,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11426516}
+      - m_Target: {fileID: 11422078}
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -808,7 +781,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11426516}
+      - m_Target: {fileID: 11422078}
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -834,12 +807,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &11426516
+--- !u!114 &11422078
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 107350}
+  m_GameObject: {fileID: 140476}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe04ee3dc3ab38b47840501f38b5bf27, type: 3}
@@ -1171,21 +1144,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Try again
---- !u!114 &11475824
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 107350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281dbe4da87f8fb42aedbaff49b1cd53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Win: {fileID: 163912}
-  GameOver: {fileID: 157388}
-  Game: {fileID: 143548}
-  StartGame: {fileID: 142856}
 --- !u!114 &11476180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1249,8 +1207,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 11426516}
-        m_MethodName: StartGame
+      - m_Target: {fileID: 11422078}
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1408,7 +1366,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 11426516}
+      - m_Target: {fileID: 11422078}
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -1474,6 +1432,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: YOU DIED
+--- !u!114 &11490210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281dbe4da87f8fb42aedbaff49b1cd53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Win: {fileID: 163912}
+  GameOver: {fileID: 157388}
+  Game: {fileID: 143548}
+  StartGame: {fileID: 142856}
 --- !u!114 &11493992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1513,7 +1486,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11426516}
+      - m_Target: {fileID: 11422078}
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -1961,7 +1934,6 @@ RectTransform:
   - {fileID: 443366}
   - {fileID: 437928}
   - {fileID: 410224}
-  - {fileID: 413614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}

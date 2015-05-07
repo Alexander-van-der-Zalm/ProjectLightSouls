@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(UIManager))]
 public class GameState : MonoBehaviour 
 {
+    private UIManager ui;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+    {
+        ui = GetComponent<UIManager>();
 	}
 	
 	// Update is called once per frame
@@ -31,6 +34,6 @@ public class GameState : MonoBehaviour
 
     public void PlayerHit(PlayerData player)
     {
-
+        ui.ChangeState(UIManager.GameStates.GameOver);
     }
 }
