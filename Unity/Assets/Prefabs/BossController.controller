@@ -496,7 +496,7 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_Motion: {fileID: 7400000, guid: 7766e1a6443928c49aefeeecef789b34, type: 2}
+  m_Motion: {fileID: 0}
   m_Tag: 
 --- !u!1102 &110208374
 AnimatorState:
@@ -568,7 +568,7 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: c1d3b5f75d4c6cc4daae34c1596b532a, type: 2}
   m_Tag: 
 --- !u!1102 &110247958
 AnimatorState:
@@ -604,7 +604,7 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_Motion: {fileID: 7400000, guid: 54b1fe173ea491a4bb08fc36e6171a8c, type: 2}
+  m_Motion: {fileID: 7400000, guid: a7a80185272097641a51043ac1605418, type: 2}
   m_Tag: 
 --- !u!1102 &110275082
 AnimatorState:
@@ -753,13 +753,13 @@ AnimatorStateMachine:
       first: {fileID: 110721048}
       second: []
     data:
-      first: {fileID: 110753240}
-      second:
-      - {fileID: 110916862}
-    data:
       first: {fileID: 110746336}
       second:
       - {fileID: 110974250}
+    data:
+      first: {fileID: 110753240}
+      second:
+      - {fileID: 110916862}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 0, y: -72, z: 0}
   m_EntryPosition: {x: 0, y: -240, z: 0}
