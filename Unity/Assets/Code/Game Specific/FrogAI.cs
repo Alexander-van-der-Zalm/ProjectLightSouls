@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 [RequireComponent(typeof(AIBehaviorController), typeof(PhysicsController), typeof(Animator))]
 public class FrogAI : MonoBehaviour 
@@ -13,6 +14,7 @@ public class FrogAI : MonoBehaviour
     public float IdleTime;
     [Range(0.0f,1.0f)]
     public float RotationChance;
+    public Vector2 RotationTarget;
 
     public bool animationPlaying;
     public string animName;
@@ -21,6 +23,7 @@ public class FrogAI : MonoBehaviour
     private PhysicsController ph;
     private Animator anim;
 	private Transform tr;
+    private Rigidbody2D rb;
 
     private Coroutine update;
     private Coroutine currentBehavior;
@@ -28,15 +31,19 @@ public class FrogAI : MonoBehaviour
     private string takeOffStr = "TakeOff";
     private string landStr = "Landing";
     private string attackNrStr = "Attack";
-    private string atackTrStr = "AttackTrigger";
-    
-	// Use this for initialization
-	void Start () 
+    private string attackTrStr = "AttackTrigger";
+    private string rotateTrStr = "RotateTrigger";
+    private string rotateStr = "Rotate";
+
+
+    // Use this for initialization
+    void Start () 
     {
         AIController = GetComponent<AIBehaviorController>();
         ph = GetComponent<PhysicsController>();
         anim = GetComponent<Animator>();
 		tr = GetComponent<Transform>();
+        rb = GetComponent<Rigidbody2D>();
 
         // Add all the standard behaviors to the functionpool
         for (int i = 0; i < StandardBehaviors.Count; i++)
@@ -58,7 +65,7 @@ public class FrogAI : MonoBehaviour
 
         //animNames();
 
-        animName = getAnimName();
+        animName = tr.forward.ToString();// getAnimName();
 
         AIController.ClearBehaviors();
 	}
@@ -94,12 +101,12 @@ public class FrogAI : MonoBehaviour
         
         // *Rotate 
         // * = optional
-        float roll = Random.Range(0.0f, 1.0f);
+        float roll = UnityEngine.Random.Range(0.0f, 1.0f);
 
         //Debug.Log("Rotate? " + (roll > RotationChance));
 
-        if(roll > RotationChance)
-            currentBehavior = StartCoroutine(RotateCR(new Vector2(0, 1)));
+        if(roll > 1-RotationChance)
+            yield return currentBehavior = StartCoroutine(RotateCR(RotationTarget));
 
         update = StartCoroutine(CoreLogicLoop());
     }
@@ -132,7 +139,7 @@ public class FrogAI : MonoBehaviour
     private IEnumerator Attack(int attackNr)
     {
         anim.SetInteger(attackNrStr, attackNr);
-        anim.SetTrigger(atackTrStr);
+        anim.SetTrigger(attackTrStr);
         yield return null;
 
         yield return StartCoroutine(waitTillAnimationChanges(getAnimName()));
@@ -222,18 +229,48 @@ public class FrogAI : MonoBehaviour
     }
 
     private IEnumerator RotateCR(Vector2 newForward)
-    {      
+    {
         // Rotate left or rotate right
 
-        yield return null;
+        float deltaAngle = getAngle(tr.up, newForward);
+
+        if (Mathf.Abs(deltaAngle) > 2)
+        {
+            anim.SetTrigger(rotateTrStr);
+            anim.SetInteger(rotateStr, (int)Mathf.Sign(deltaAngle));
+        }
+
+        while (Mathf.Abs(deltaAngle) > 2)
+        {
+            deltaAngle = getAngle(tr.up, newForward);
+
+            Debug.Log(deltaAngle);
+            yield return null;
+        }
+
+        anim.SetFloat(rotateStr, 0);
     }
 
-	private Vector2 RandomDir()
+    private float getAngle(Vector3 v1, Vector2 v2)
+    {
+        float angle = Vector2.Angle(v1, v2);
+
+        bool left = Vector3.Cross(v1, v2).z > 0;
+
+        if (left)
+            angle = -angle;
+
+        Debug.Log(angle + " " + v1 + " " + v2);
+
+        return angle;
+    }
+
+    private Vector2 RandomDir()
 	{
 		Vector2 randomDir = new Vector2();
 		while(randomDir.magnitude == 0)
 		{
-			randomDir = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+			randomDir = new Vector2(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f));
 		}
 		randomDir.Normalize();
 		return randomDir;
@@ -245,11 +282,11 @@ public class FrogAI : MonoBehaviour
 
         ph.Input = randomDir;
 
-        yield return new WaitForSeconds(Random.Range(2.0f, 5.0f));
+        yield return new WaitForSeconds(UnityEngine.Random.Range(2.0f, 5.0f));
 
         ph.Input = Vector2.zero;
 
-        yield return new WaitForSeconds(Random.Range(0.0f, 3.0f));
+        yield return new WaitForSeconds(UnityEngine.Random.Range(0.0f, 3.0f));
 
         currentBehavior =  StartCoroutine(RandomMoveCR());
     }
