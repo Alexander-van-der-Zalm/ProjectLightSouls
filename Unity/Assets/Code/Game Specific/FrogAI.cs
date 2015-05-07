@@ -73,8 +73,6 @@ public class FrogAI : MonoBehaviour
         //anim.GetCurrentAnimationClipState(0).ToString();
     }
 
-
-
     #region Boss Logic
 
     private IEnumerator CoreLogicLoop()
@@ -101,7 +99,7 @@ public class FrogAI : MonoBehaviour
         //Debug.Log("Rotate? " + (roll > RotationChance));
 
         if(roll > RotationChance)
-            currentBehavior = StartCoroutine(RotateCR());
+            currentBehavior = StartCoroutine(RotateCR(new Vector2(0, 1)));
 
         update = StartCoroutine(CoreLogicLoop());
     }
@@ -113,7 +111,7 @@ public class FrogAI : MonoBehaviour
             case "Idle":
                 return Idle();
             case "Rotate":
-                return RotateCR();
+                return RotateCR(new Vector2(0, 1));
             case "JumpF":
 				Vector2 randomDir = RandomDir();
 				// Change to tr.forward
@@ -223,8 +221,10 @@ public class FrogAI : MonoBehaviour
 
     }
 
-    private IEnumerator RotateCR()
-    {
+    private IEnumerator RotateCR(Vector2 newForward)
+    {      
+        // Rotate left or rotate right
+
         yield return null;
     }
 

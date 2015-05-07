@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(PhysicsController))]
+[RequireComponent(typeof(PhysicsController),typeof(PlayerData))]
 public class ActorController : MonoBehaviour 
 {
+    private GameState gs;
+    private PlayerData pd;
     private PhysicsController pc;
     private Vector2 lastInputDirection;
 
@@ -11,6 +13,8 @@ public class ActorController : MonoBehaviour
 	void Start () 
     {
         pc = GetComponent<PhysicsController>();
+        gs = FindObjectOfType<GameState>();
+        pd = GetComponent<PlayerData>();
 	}
 	
     public void Move(float horizontal, float vertical)
@@ -32,5 +36,12 @@ public class ActorController : MonoBehaviour
     public void Scan()
     {
         Debug.Log("Scan");
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        gs.PlayerHit(pd);
+
+        Debug.Log("Collision!");
     }
 }
