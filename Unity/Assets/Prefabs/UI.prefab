@@ -167,6 +167,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 443366}
+  - 225: {fileID: 22590484}
   m_Layer: 0
   m_Name: Start
   m_TagString: Untagged
@@ -182,6 +183,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 437928}
+  - 225: {fileID: 22594070}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -214,6 +216,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 487886}
+  - 225: {fileID: 22536222}
   m_Layer: 0
   m_Name: Dead
   m_TagString: Untagged
@@ -299,6 +302,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 426140}
+  - 225: {fileID: 22522520}
   m_Layer: 0
   m_Name: Win
   m_TagString: Untagged
@@ -2010,6 +2014,50 @@ RectTransform:
   m_AnchoredPosition: {x: -30.6999817, y: -56.8000183}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
+--- !u!225 &22522520
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163912}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &22536222
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157388}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &22590484
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142856}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &22594070
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143548}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

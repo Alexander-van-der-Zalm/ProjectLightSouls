@@ -34,6 +34,12 @@ public class GameState : MonoBehaviour
 
     public void PlayerHit(PlayerData player)
     {
+        // Play sound
+
+        // Fade in black
+
+        // Put in the game over ui
         ui.ChangeState(UIManager.GameStates.GameOver);
+
     }
 }
