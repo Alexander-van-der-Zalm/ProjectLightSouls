@@ -16,6 +16,9 @@ public class FrogAI : MonoBehaviour
     public float RotationChance;
     public Vector2 RotationTarget;
 
+    public float TakeOffSpeed = 3.0f;
+    public float JumpSpeed = 20.0f;
+
     public bool animationPlaying;
     public string animName;
 
@@ -34,6 +37,8 @@ public class FrogAI : MonoBehaviour
     private string attackTrStr = "AttackTrigger";
     private string rotateTrStr = "RotateTrigger";
     private string rotateStr = "Rotate";
+
+
 
 
     // Use this for initialization
@@ -60,12 +65,13 @@ public class FrogAI : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.I))
         {
-            AIController.PrintBehaviors();
+            //AIController.PrintBehaviors();
+            getAnimCurves();
         }
 
         //animNames();
 
-        animName = tr.forward.ToString();// getAnimName();
+        animName = getAnimName();
 
         AIController.ClearBehaviors();
 	}
@@ -77,7 +83,26 @@ public class FrogAI : MonoBehaviour
             return clipInfos[0].clip.name;
         else
             return "";
-        //anim.GetCurrentAnimationClipState(0).ToString();
+    }
+
+    private List<AnimationCurve> getAnimCurves()
+    {
+        AnimatorClipInfo[] clipInfos = anim.GetCurrentAnimatorClipInfo(0);
+        if (clipInfos.Length == 0)
+            return null;
+
+        List<AnimationCurve> curves = new List<AnimationCurve>();
+        for(int i = 0; i < clipInfos.Length; i++)
+        {
+            AnimationClip clip = clipInfos[i].clip;
+            foreach (var binding in UnityEditor.AnimationUtility.GetCurveBindings(clip))
+            {
+                curves.Add(UnityEditor.AnimationUtility.GetEditorCurve(clip, binding));
+                Debug.Log(binding.propertyName + " " + binding.path);
+            }
+        }
+        Debug.Break();
+        return curves;
     }
 
     #region Boss Logic
@@ -122,7 +147,7 @@ public class FrogAI : MonoBehaviour
             case "JumpF":
 				Vector2 randomDir = RandomDir();
 				// Change to tr.forward
-				return JumpCR(Vector2.up, 30.0f);
+				return JumpCR(tr.up, 100.0f);
             case "SwipeNE":
                 return Attack(1);
             case "BackHop":
@@ -166,28 +191,37 @@ public class FrogAI : MonoBehaviour
         // Find jump target
         // TakeOff
         // Trigger physics.dodge
-        // 
-        
-        //anim.SetBool(airborneStr, true);
-        anim.SetTrigger(takeOffStr);
-        Debug.Log("0 " + getAnimName());
 
-		yield return StartCoroutine(waitForAnimation(id+"_TakeOff"));
+        //anim.SetBool(airborneStr, true);
+
+        Vector2 p1 = tr.position;
+        float t1 = Time.realtimeSinceStartup;
 
         //// Chargeup
         //// Stay charging til animation is finished
+        anim.SetTrigger(takeOffStr);
+        yield return StartCoroutine(waitForAnimation(id+"_TakeOff"));
 
-		yield return StartCoroutine(waitForAnimation(id+"_Airborne"));
+        ph.Dodge(jumpDirection, jumpDistance, JumpSpeed);
 
-        // Airborne
-        // Stay airborne till dodge move has finished
+        //ph.Pause = true;
+        ////yield return null;
 
-        // Trigger dodge
-        ph.Dodge(jumpDirection, jumpDistance);
+        //// Add a small velocity if it isnt that speed already
+        //if (rb.velocity.magnitude < TakeOffSpeed)
+        //{
+        //    rb.velocity = tr.up * TakeOffSpeed;
+        //    Debug.Log("Vel "  + rb.velocity);
+        //    //Debug.Break();
+        //}
+        
+        // Now wait till charge anim has finished  
+        yield return StartCoroutine(waitForAnimationToFinish(id + "_TakeOff"));
 
-        yield return null;
+        //Trigger dodge
+        //ph.Pause = false;
+        //ph.Dodge(jumpDirection, jumpDistance, JumpSpeed);
 
-        // for as long as the physics controller sais its airborne
         while(ph.Airborne)
         {
             yield return null;
@@ -197,6 +231,7 @@ public class FrogAI : MonoBehaviour
         anim.SetTrigger(landStr);
         //anim.SetBool(airborneStr, false);
 
+        // Wait till the land animation is finished before starting the new action
 		yield return StartCoroutine(waitForAnimation(id+"_Land"));
 		yield return StartCoroutine(waitForAnimationToFinish(id+"_Land"));
     }
@@ -244,7 +279,7 @@ public class FrogAI : MonoBehaviour
         {
             deltaAngle = getAngle(tr.up, newForward);
 
-            Debug.Log(deltaAngle);
+            //Debug.Log(deltaAngle);
             yield return null;
         }
 
@@ -260,7 +295,7 @@ public class FrogAI : MonoBehaviour
         if (left)
             angle = -angle;
 
-        Debug.Log(angle + " " + v1 + " " + v2);
+        //Debug.Log(angle + " " + v1 + " " + v2);
 
         return angle;
     }
