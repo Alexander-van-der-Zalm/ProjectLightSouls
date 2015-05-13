@@ -14,10 +14,10 @@ public class FrogAI : MonoBehaviour
     public float IdleTime;
     [Range(0.0f,1.0f)]
     public float RotationChance;
+    public float RotationAngle = 4.0f;
     //public Vector2 RotationTarget;
 
-    private Transform player;
-    public bool animationPlaying;
+    //public bool animationPlaying;
     public string animName;
 
     private AIBehaviorController AIController;
@@ -25,6 +25,7 @@ public class FrogAI : MonoBehaviour
     private Animator anim;
 	private Transform tr;
     private Rigidbody2D rb;
+    private Transform player;
 
     private Coroutine update;
     private Coroutine currentBehavior;
@@ -146,6 +147,12 @@ public class FrogAI : MonoBehaviour
                 return randomJump();
             case "SwipeNE":
                 return Attack(1);
+            case "SwipeNW":
+                return Attack(2);
+            case "SwipeSE":
+                return Attack(3);
+            case "SwipeSW":
+                return Attack(4);
             case "BackHop":
             case "SideHop":
             case "SideSweep":
@@ -264,14 +271,14 @@ public class FrogAI : MonoBehaviour
         Vector2 newForward = (target.position - tr.position).normalized;
         float deltaAngle = getAngle(tr.up, newForward);
 
-        if (Mathf.Abs(deltaAngle) > 2)
+        if (Mathf.Abs(deltaAngle) > RotationAngle)
         {
             anim.SetTrigger(rotateTrStr);
             anim.SetInteger(rotateStr, (int)Mathf.Sign(deltaAngle));
         }
 
         float t0 = Time.realtimeSinceStartup;
-        while (Mathf.Abs(deltaAngle) > 2 && (Time.realtimeSinceStartup - t0) <= maxTime)
+        while (Mathf.Abs(deltaAngle) > RotationAngle && (Time.realtimeSinceStartup - t0) <= maxTime)
         {
             deltaAngle = getAngle(tr.up, newForward);
             newForward = (target.position - tr.position).normalized;
@@ -288,13 +295,13 @@ public class FrogAI : MonoBehaviour
 
         float deltaAngle = getAngle(tr.up, newForward);
 
-        if (Mathf.Abs(deltaAngle) > 2)
+        if (Mathf.Abs(deltaAngle) > RotationAngle)
         {
             anim.SetTrigger(rotateTrStr);
             anim.SetInteger(rotateStr, (int)Mathf.Sign(deltaAngle));
         }
 
-        while (Mathf.Abs(deltaAngle) > 2)
+        while (Mathf.Abs(deltaAngle) > RotationAngle)
         {
             deltaAngle = getAngle(tr.up, newForward);
 
