@@ -68,14 +68,14 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Rotate
-    m_Type: 3
+  - m_Name: RotateTrigger
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: RotateTrigger
-    m_Type: 9
+  - m_Name: Rotate
+    m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -565,7 +565,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: RotateL
-  m_Speed: 1.5
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110153010}
@@ -718,7 +718,7 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_Motion: {fileID: 7400000, guid: 7caad1ada94c74742abda91c852403c6, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1712c1ed855d44a40bfd7b1f4bb1eccc, type: 2}
   m_Tag: 
 --- !u!1102 &110276426
 AnimatorState:
@@ -756,23 +756,6 @@ AnimatorState:
   m_Mirror: 0
   m_Motion: {fileID: 0}
   m_Tag: 
---- !u!1102 &110285370
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Boss_Komba_swipeFR
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_Motion: {fileID: 7400000, guid: 3f05d5db6f0b4ac469ae4f2e78e19188, type: 2}
-  m_Tag: 
 --- !u!1102 &110288434
 AnimatorState:
   serializedVersion: 5
@@ -780,7 +763,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: RotateR
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110114192}
@@ -826,7 +809,7 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_Motion: {fileID: 7400000, guid: 1712c1ed855d44a40bfd7b1f4bb1eccc, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3f05d5db6f0b4ac469ae4f2e78e19188, type: 2}
   m_Tag: 
 --- !u!1107 &110721048
 AnimatorStateMachine:
@@ -842,9 +825,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 110283656}
     m_Position: {x: 264, y: -156, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 110285370}
-    m_Position: {x: 299, y: -91, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 110753240}
@@ -871,13 +851,13 @@ AnimatorStateMachine:
       first: {fileID: 110721048}
       second: []
     data:
-      first: {fileID: 110753240}
-      second:
-      - {fileID: 110916862}
-    data:
       first: {fileID: 110746336}
       second:
       - {fileID: 110974250}
+    data:
+      first: {fileID: 110753240}
+      second:
+      - {fileID: 110916862}
     data:
       first: {fileID: 110797610}
       second:

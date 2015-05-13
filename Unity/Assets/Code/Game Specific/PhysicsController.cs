@@ -18,9 +18,12 @@ public class PhysicsController : MonoBehaviour
     private Rigidbody2D rb;
 
     private Vector2 airSpeed;
+    private bool dodging = false;
     public bool Airborne = false;
+    public bool Pause = false;
 
     private float speed;
+    Coroutine dodgeCR;
 
 	// Use this for initialization
 	void Start () 
@@ -34,7 +37,13 @@ public class PhysicsController : MonoBehaviour
 	    //Normalize input
         Input.Normalize();
 
-        recalculateAccelFriction(TimeToMaxSpeed, MovementMaxSpeed);
+        if (Pause)
+            return;
+
+        if (Input.magnitude == 0)
+            recalculateAccelFriction(TimeToMaxSpeed, DodgeMaxSpeed);
+        else
+            recalculateAccelFriction(TimeToMaxSpeed, MovementMaxSpeed);
         
         float dt = Time.deltaTime;
 
@@ -48,7 +57,7 @@ public class PhysicsController : MonoBehaviour
             friction = v * m_friction;
             rb.velocity += dt * (a - friction);
         }
-        else
+        else if(dodging)
             rb.velocity = airSpeed;
 
         speed = rb.velocity.magnitude;
@@ -61,7 +70,18 @@ public class PhysicsController : MonoBehaviour
         m_accel = m_friction * maxSpeed;
     }
 
-    Coroutine dodgeCR;
+
+    public void Dodge(Vector2 direction, float distance, float speed)
+    {
+        float time = distance / speed;
+
+        dodgeCR = StartCoroutine(DodgeCR(direction, speed, time));
+    }
+
+    public void DodgeTimed(Vector2 direction, float time, float speed)
+    {
+        dodgeCR = StartCoroutine(DodgeCR(direction, speed, time));
+    }
 
     public void Dodge(Vector2 direction, float distance)
     {
@@ -74,17 +94,22 @@ public class PhysicsController : MonoBehaviour
     {
         StopCoroutine(dodgeCR);
         Airborne = false;
+        dodging = false;
     }
 
     private IEnumerator DodgeCR(Vector2 direction, float speed, float time)
     {
         Airborne = true;
+        dodging = true;
 
         airSpeed = direction.normalized * speed;
+
+       // Debug.Log(string.Format("Dodge t: {0} d:{1} s: {2}", time, direction, speed));
 
         yield return new WaitForSeconds(time);
 
         Airborne = false;
+        dodging = false;
     }
 
     #region Debug

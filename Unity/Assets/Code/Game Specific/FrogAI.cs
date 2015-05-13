@@ -14,9 +14,10 @@ public class FrogAI : MonoBehaviour
     public float IdleTime;
     [Range(0.0f,1.0f)]
     public float RotationChance;
-    public Vector2 RotationTarget;
+    public float RotationAngle = 4.0f;
+    //public Vector2 RotationTarget;
 
-    public bool animationPlaying;
+    //public bool animationPlaying;
     public string animName;
 
     private AIBehaviorController AIController;
@@ -24,6 +25,7 @@ public class FrogAI : MonoBehaviour
     private Animator anim;
 	private Transform tr;
     private Rigidbody2D rb;
+    private Transform player;
 
     private Coroutine update;
     private Coroutine currentBehavior;
@@ -35,7 +37,6 @@ public class FrogAI : MonoBehaviour
     private string rotateTrStr = "RotateTrigger";
     private string rotateStr = "Rotate";
 
-
     // Use this for initialization
     void Start () 
     {
@@ -44,6 +45,9 @@ public class FrogAI : MonoBehaviour
         anim = GetComponent<Animator>();
 		tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player == null)
+            Debug.LogError("No Player with player tag in the scene");
 
         // Add all the standard behaviors to the functionpool
         for (int i = 0; i < StandardBehaviors.Count; i++)
@@ -60,12 +64,13 @@ public class FrogAI : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.I))
         {
-            AIController.PrintBehaviors();
+            //AIController.PrintBehaviors();
+            getAnimCurves();
         }
 
         //animNames();
 
-        animName = tr.forward.ToString();// getAnimName();
+        animName = getAnimName();
 
         AIController.ClearBehaviors();
 	}
@@ -77,7 +82,26 @@ public class FrogAI : MonoBehaviour
             return clipInfos[0].clip.name;
         else
             return "";
-        //anim.GetCurrentAnimationClipState(0).ToString();
+    }
+
+    private List<AnimationCurve> getAnimCurves()
+    {
+        AnimatorClipInfo[] clipInfos = anim.GetCurrentAnimatorClipInfo(0);
+        if (clipInfos.Length == 0)
+            return null;
+
+        List<AnimationCurve> curves = new List<AnimationCurve>();
+        for(int i = 0; i < clipInfos.Length; i++)
+        {
+            AnimationClip clip = clipInfos[i].clip;
+            foreach (var binding in UnityEditor.AnimationUtility.GetCurveBindings(clip))
+            {
+                curves.Add(UnityEditor.AnimationUtility.GetEditorCurve(clip, binding));
+                Debug.Log(binding.propertyName + " " + binding.path);
+            }
+        }
+        Debug.Break();
+        return curves;
     }
 
     #region Boss Logic
@@ -106,7 +130,7 @@ public class FrogAI : MonoBehaviour
         //Debug.Log("Rotate? " + (roll > RotationChance));
 
         if(roll > 1-RotationChance)
-            yield return currentBehavior = StartCoroutine(RotateCR(RotationTarget));
+            yield return currentBehavior = StartCoroutine(rotateTowardsTransform(player, UnityEngine.Random.Range(4.0f,8.0f)));
 
         update = StartCoroutine(CoreLogicLoop());
     }
@@ -118,13 +142,17 @@ public class FrogAI : MonoBehaviour
             case "Idle":
                 return Idle();
             case "Rotate":
-                return RotateCR(new Vector2(0, 1));
+                return RotateCR(RandomDir());
             case "JumpF":
-				Vector2 randomDir = RandomDir();
-				// Change to tr.forward
-				return JumpCR(Vector2.up, 30.0f);
+                return randomJump();
             case "SwipeNE":
                 return Attack(1);
+            case "SwipeNW":
+                return Attack(2);
+            case "SwipeSE":
+                return Attack(3);
+            case "SwipeSW":
+                return Attack(4);
             case "BackHop":
             case "SideHop":
             case "SideSweep":
@@ -135,6 +163,21 @@ public class FrogAI : MonoBehaviour
         }
         return null;
     }
+
+    private IEnumerator randomJump()
+    {
+        Vector2 randomDir = RandomDir();
+        yield return RotateCR(randomDir);
+        // Change to tr.forward
+        yield return StartCoroutine(JumpCR(tr.up, 100.0f));
+    }
+
+    
+
+    //private IEnumerator jumpToPlayer()
+    //{
+
+    //}
 
     private IEnumerator Attack(int attackNr)
     {
@@ -166,28 +209,22 @@ public class FrogAI : MonoBehaviour
         // Find jump target
         // TakeOff
         // Trigger physics.dodge
-        // 
-        
-        //anim.SetBool(airborneStr, true);
-        anim.SetTrigger(takeOffStr);
-        Debug.Log("0 " + getAnimName());
 
-		yield return StartCoroutine(waitForAnimation(id+"_TakeOff"));
+        //anim.SetBool(airborneStr, true);
+
+        Vector2 p1 = tr.position;
+        float t1 = Time.realtimeSinceStartup;
 
         //// Chargeup
         //// Stay charging til animation is finished
+        anim.SetTrigger(takeOffStr);
+        yield return StartCoroutine(waitForAnimation(id+"_TakeOff"));
 
-		yield return StartCoroutine(waitForAnimation(id+"_Airborne"));
-
-        // Airborne
-        // Stay airborne till dodge move has finished
-
-        // Trigger dodge
         ph.Dodge(jumpDirection, jumpDistance);
 
-        yield return null;
+        // Now wait till charge anim has finished  
+        yield return StartCoroutine(waitForAnimationToFinish(id + "_TakeOff"));
 
-        // for as long as the physics controller sais its airborne
         while(ph.Airborne)
         {
             yield return null;
@@ -197,6 +234,7 @@ public class FrogAI : MonoBehaviour
         anim.SetTrigger(landStr);
         //anim.SetBool(airborneStr, false);
 
+        // Wait till the land animation is finished before starting the new action
 		yield return StartCoroutine(waitForAnimation(id+"_Land"));
 		yield return StartCoroutine(waitForAnimationToFinish(id+"_Land"));
     }
@@ -228,23 +266,46 @@ public class FrogAI : MonoBehaviour
 
     }
 
+    private IEnumerator rotateTowardsTransform(Transform target, float maxTime)
+    {
+        Vector2 newForward = (target.position - tr.position).normalized;
+        float deltaAngle = getAngle(tr.up, newForward);
+
+        if (Mathf.Abs(deltaAngle) > RotationAngle)
+        {
+            anim.SetTrigger(rotateTrStr);
+            anim.SetInteger(rotateStr, (int)Mathf.Sign(deltaAngle));
+        }
+
+        float t0 = Time.realtimeSinceStartup;
+        while (Mathf.Abs(deltaAngle) > RotationAngle && (Time.realtimeSinceStartup - t0) <= maxTime)
+        {
+            deltaAngle = getAngle(tr.up, newForward);
+            newForward = (target.position - tr.position).normalized;
+            Debug.Log(string.Format("Rotate n: {3} d: {0} t: {1} m: {2}",deltaAngle, Time.realtimeSinceStartup - t0, maxTime, newForward));
+            yield return null;
+        }
+
+        anim.SetFloat(rotateStr, 0);
+    }
+
     private IEnumerator RotateCR(Vector2 newForward)
     {
         // Rotate left or rotate right
 
         float deltaAngle = getAngle(tr.up, newForward);
 
-        if (Mathf.Abs(deltaAngle) > 2)
+        if (Mathf.Abs(deltaAngle) > RotationAngle)
         {
             anim.SetTrigger(rotateTrStr);
             anim.SetInteger(rotateStr, (int)Mathf.Sign(deltaAngle));
         }
 
-        while (Mathf.Abs(deltaAngle) > 2)
+        while (Mathf.Abs(deltaAngle) > RotationAngle)
         {
             deltaAngle = getAngle(tr.up, newForward);
 
-            Debug.Log(deltaAngle);
+            //Debug.Log(deltaAngle);
             yield return null;
         }
 
@@ -260,7 +321,7 @@ public class FrogAI : MonoBehaviour
         if (left)
             angle = -angle;
 
-        Debug.Log(angle + " " + v1 + " " + v2);
+        //Debug.Log(angle + " " + v1 + " " + v2);
 
         return angle;
     }
