@@ -58,9 +58,11 @@ public class FrogAI : MonoBehaviour
 
         //currentRoutine = StartCoroutine(RandomMoveCR());
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () 
+
+    #region Update & Coroutine loop
+
+    // Update is called once per frame
+    void FixedUpdate () 
     {
         if(Input.GetKeyUp(KeyCode.I))
         {
@@ -74,37 +76,6 @@ public class FrogAI : MonoBehaviour
 
         AIController.ClearBehaviors();
 	}
-
-    private string getAnimName()
-    {
-        AnimatorClipInfo[] clipInfos = anim.GetCurrentAnimatorClipInfo(0);
-        if (clipInfos.Length > 0)
-            return clipInfos[0].clip.name;
-        else
-            return "";
-    }
-
-    private List<AnimationCurve> getAnimCurves()
-    {
-        AnimatorClipInfo[] clipInfos = anim.GetCurrentAnimatorClipInfo(0);
-        if (clipInfos.Length == 0)
-            return null;
-
-        List<AnimationCurve> curves = new List<AnimationCurve>();
-        for(int i = 0; i < clipInfos.Length; i++)
-        {
-            AnimationClip clip = clipInfos[i].clip;
-            foreach (var binding in UnityEditor.AnimationUtility.GetCurveBindings(clip))
-            {
-                curves.Add(UnityEditor.AnimationUtility.GetEditorCurve(clip, binding));
-                Debug.Log(binding.propertyName + " " + binding.path);
-            }
-        }
-        Debug.Break();
-        return curves;
-    }
-
-    #region Boss Logic
 
     private IEnumerator CoreLogicLoop()
     {
@@ -135,6 +106,8 @@ public class FrogAI : MonoBehaviour
         update = StartCoroutine(CoreLogicLoop());
     }
 
+    #endregion
+
     private IEnumerator GetFunction(string name)
     {
         switch(name)
@@ -146,9 +119,9 @@ public class FrogAI : MonoBehaviour
             case "JumpF":
                 return randomJump();
             case "SwipeNE":
-                return Attack(1);
-            case "SwipeNW":
                 return Attack(2);
+            case "SwipeNW":
+                return Attack(1);
             case "SwipeSE":
                 return Attack(3);
             case "SwipeSW":
@@ -164,47 +137,29 @@ public class FrogAI : MonoBehaviour
         return null;
     }
 
-    private IEnumerator randomJump()
-    {
-        Vector2 randomDir = RandomDir();
-        yield return RotateCR(randomDir);
-        // Change to tr.forward
-        yield return StartCoroutine(JumpCR(tr.up, 100.0f));
-    }
+    #region AI Behaviors
 
-    
-
-    //private IEnumerator jumpToPlayer()
-    //{
-
-    //}
+    #region Attack 
 
     private IEnumerator Attack(int attackNr)
     {
         anim.SetInteger(attackNrStr, attackNr);
         anim.SetTrigger(attackTrStr);
-        yield return null;
+        //yield return null;
+
+        //Debug.Log(getAnimName());
 
         yield return StartCoroutine(waitTillAnimationChanges(getAnimName()));
-
+        Debug.Log(getAnimName());
+        yield return StartCoroutine(waitForAnimationToFinish(getAnimName()));
         anim.SetInteger(attackNrStr, 0);
     }
 
-    private IEnumerator waitTillAnimationChanges(string originalAnimName)
-    {
-        string curName = originalAnimName;
+    #endregion
 
-        while (originalAnimName == curName)
-        {
-            curName = getAnimName();
-            yield return null;
-        }
-        Debug.Log(string.Format("Animation changed: {0} to {1}", originalAnimName, curName));
-    }
+    #region Jump
 
-    #region Shared Functions
-
-	private IEnumerator JumpCR(Vector2 jumpDirection, float jumpDistance, string id = "Boss_Komba_JumpF")
+    private IEnumerator JumpCR(Vector2 jumpDirection, float jumpDistance, string id = "Boss_Komba_JumpF")
     {
         // Find jump target
         // TakeOff
@@ -239,32 +194,17 @@ public class FrogAI : MonoBehaviour
 		yield return StartCoroutine(waitForAnimationToFinish(id+"_Land"));
     }
 
-    private IEnumerator waitForAnimation(string animToStop)
+    private IEnumerator randomJump()
     {
-        int i = 0;
-        while(animToStop != getAnimName())
-        {
-            i++;
-            yield return null;
-        }
-        Debug.Log("Stopped looking for " + animToStop + "  " + i);
+        Vector2 randomDir = RandomDir();
+        yield return RotateCR(randomDir);
+        // Change to tr.forward
+        yield return StartCoroutine(JumpCR(tr.up, 100.0f));
     }
 
-	private IEnumerator waitForAnimationToFinish(string animToStop)
-	{
-		int i = 0;
-		while(animToStop == getAnimName())
-		{
-			i++;
-			yield return null;
-		}
-		Debug.Log("Finished " + animToStop + " after " + i);
-	}
+    #endregion
 
-    private void MoveCR()
-    {
-
-    }
+    #region Rotate
 
     private IEnumerator rotateTowardsTransform(Transform target, float maxTime)
     {
@@ -282,7 +222,7 @@ public class FrogAI : MonoBehaviour
         {
             deltaAngle = getAngle(tr.up, newForward);
             newForward = (target.position - tr.position).normalized;
-            Debug.Log(string.Format("Rotate n: {3} d: {0} t: {1} m: {2}",deltaAngle, Time.realtimeSinceStartup - t0, maxTime, newForward));
+//            Debug.Log(string.Format("Rotate n: {3} d: {0} t: {1} m: {2}",deltaAngle, Time.realtimeSinceStartup - t0, maxTime, newForward));
             yield return null;
         }
 
@@ -312,6 +252,103 @@ public class FrogAI : MonoBehaviour
         anim.SetFloat(rotateStr, 0);
     }
 
+    private IEnumerator RandomMoveCR()
+    {
+		Vector2 randomDir = RandomDir();
+
+        ph.Input = randomDir;
+
+        yield return new WaitForSeconds(UnityEngine.Random.Range(2.0f, 5.0f));
+
+        ph.Input = Vector2.zero;
+
+        yield return new WaitForSeconds(UnityEngine.Random.Range(0.0f, 3.0f));
+
+        currentBehavior =  StartCoroutine(RandomMoveCR());
+    }
+
+    #endregion
+
+    private void MoveCR()
+    {
+
+    }
+
+    private IEnumerator Idle()
+    {
+        //Debug.Log("IDLE 1");
+        yield return new WaitForSeconds(IdleTime);
+        //Debug.Log("IDLE 2");
+    }
+
+    #endregion
+    
+    #region Helper Functions
+
+    private List<AnimationCurve> getAnimCurves()
+    {
+        AnimatorClipInfo[] clipInfos = anim.GetCurrentAnimatorClipInfo(0);
+        if (clipInfos.Length == 0)
+            return null;
+
+        List<AnimationCurve> curves = new List<AnimationCurve>();
+        for(int i = 0; i < clipInfos.Length; i++)
+        {
+            AnimationClip clip = clipInfos[i].clip;
+            foreach (var binding in UnityEditor.AnimationUtility.GetCurveBindings(clip))
+            {
+                curves.Add(UnityEditor.AnimationUtility.GetEditorCurve(clip, binding));
+                Debug.Log(binding.propertyName + " " + binding.path);
+            }
+        }
+        Debug.Break();
+        return curves;
+    }
+
+    private string getAnimName()
+    {
+        AnimatorClipInfo[] clipInfos = anim.GetCurrentAnimatorClipInfo(0);
+        if (clipInfos.Length > 0)
+            return clipInfos[0].clip.name;
+        else
+            return "";
+    }
+
+
+    private IEnumerator waitForAnimation(string animToStop)
+    {
+        int i = 0;
+        while(animToStop != getAnimName())
+        {
+            i++;
+            yield return null;
+        }
+        Debug.Log("Stopped looking for " + animToStop + "  " + i);
+    }
+
+    private IEnumerator waitTillAnimationChanges(string originalAnimName)
+    {
+        string curName = originalAnimName;
+
+        while (originalAnimName == curName)
+        {
+            curName = getAnimName();
+            yield return null;
+        }
+        Debug.Log(string.Format("Animation changed: {0} to {1}", originalAnimName, curName));
+    }
+    
+	private IEnumerator waitForAnimationToFinish(string animToStop)
+	{
+		int i = 0;
+		while(animToStop == getAnimName())
+		{
+			i++;
+			yield return null;
+		}
+		Debug.Log("Finished " + animToStop + " after " + i);
+	}
+
     private float getAngle(Vector3 v1, Vector2 v2)
     {
         float angle = Vector2.Angle(v1, v2);
@@ -337,73 +374,11 @@ public class FrogAI : MonoBehaviour
 		return randomDir;
 	}
 
-    private IEnumerator RandomMoveCR()
-    {
-		Vector2 randomDir = RandomDir();
-
-        ph.Input = randomDir;
-
-        yield return new WaitForSeconds(UnityEngine.Random.Range(2.0f, 5.0f));
-
-        ph.Input = Vector2.zero;
-
-        yield return new WaitForSeconds(UnityEngine.Random.Range(0.0f, 3.0f));
-
-        currentBehavior =  StartCoroutine(RandomMoveCR());
-    }
-
     #endregion
 
-    #region AnimationFunctions
+    //private IEnumerator jumpToPlayer()
+    //{
 
-    private IEnumerator Idle()
-    {
-        //Debug.Log("IDLE 1");
-        yield return new WaitForSeconds(IdleTime);
-        //Debug.Log("IDLE 2");
-    }
+    //}
 
-    private void Rotate(float maxTime, Transform target = null)
-    {
-
-    }
-
-    private void BackHop(Vector2 target)
-    {
-        
-    }
-
-    private void SideHop(Vector2 target)
-    {
-
-    }
-
-    private void FrontHop(Vector2 target)
-    {
-
-    }
-
-    private void SideSweep()
-    {
-
-    }
-
-    private void BackLegSweep()
-    {
-
-    }
-
-    private void TongueSweep()
-    {
-
-    }
-
-    private void TongueStretch()
-    {
-
-    }
-
-    #endregion
-
-    #endregion
 }

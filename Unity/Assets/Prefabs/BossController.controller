@@ -837,10 +837,10 @@ AnimatorStateMachine:
     m_Position: {x: 264, y: 0, z: 0}
   m_AnyStateTransitions:
   - {fileID: 110187034}
+  - {fileID: 110117188}
   - {fileID: 110182266}
   - {fileID: 110146116}
   - {fileID: 110103362}
-  - {fileID: 110117188}
   - {fileID: 110113748}
   m_EntryTransitions: []
   m_StateMachineTransitions:
