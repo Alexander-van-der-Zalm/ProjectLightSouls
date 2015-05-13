@@ -129,7 +129,7 @@ public class FrogAI : MonoBehaviour
         //Debug.Log("Rotate? " + (roll > RotationChance));
 
         if(roll > 1-RotationChance)
-            yield return currentBehavior = StartCoroutine(rotateTowardsTransform(player, UnityEngine.Random.Range(1.0f,2.0f)));
+            yield return currentBehavior = StartCoroutine(rotateTowardsTransform(player, UnityEngine.Random.Range(4.0f,8.0f)));
 
         update = StartCoroutine(CoreLogicLoop());
     }
@@ -271,11 +271,11 @@ public class FrogAI : MonoBehaviour
         }
 
         float t0 = Time.realtimeSinceStartup;
-        while (Mathf.Abs(deltaAngle) > 2 || (Time.realtimeSinceStartup - t0) >= maxTime)
+        while (Mathf.Abs(deltaAngle) > 2 && (Time.realtimeSinceStartup - t0) <= maxTime)
         {
             deltaAngle = getAngle(tr.up, newForward);
             newForward = (target.position - tr.position).normalized;
-            
+            Debug.Log(string.Format("Rotate n: {3} d: {0} t: {1} m: {2}",deltaAngle, Time.realtimeSinceStartup - t0, maxTime, newForward));
             yield return null;
         }
 
