@@ -16,9 +16,6 @@ public class FrogAI : MonoBehaviour
     public float RotationChance;
     public Vector2 RotationTarget;
 
-    public float TakeOffSpeed = 3.0f;
-    public float JumpSpeed = 20.0f;
-
     public bool animationPlaying;
     public string animName;
 
@@ -37,9 +34,6 @@ public class FrogAI : MonoBehaviour
     private string attackTrStr = "AttackTrigger";
     private string rotateTrStr = "RotateTrigger";
     private string rotateStr = "Rotate";
-
-
-
 
     // Use this for initialization
     void Start () 
@@ -202,25 +196,10 @@ public class FrogAI : MonoBehaviour
         anim.SetTrigger(takeOffStr);
         yield return StartCoroutine(waitForAnimation(id+"_TakeOff"));
 
-        ph.Dodge(jumpDirection, jumpDistance, JumpSpeed);
+        ph.Dodge(jumpDirection, jumpDistance);
 
-        //ph.Pause = true;
-        ////yield return null;
-
-        //// Add a small velocity if it isnt that speed already
-        //if (rb.velocity.magnitude < TakeOffSpeed)
-        //{
-        //    rb.velocity = tr.up * TakeOffSpeed;
-        //    Debug.Log("Vel "  + rb.velocity);
-        //    //Debug.Break();
-        //}
-        
         // Now wait till charge anim has finished  
         yield return StartCoroutine(waitForAnimationToFinish(id + "_TakeOff"));
-
-        //Trigger dodge
-        //ph.Pause = false;
-        //ph.Dodge(jumpDirection, jumpDistance, JumpSpeed);
 
         while(ph.Airborne)
         {

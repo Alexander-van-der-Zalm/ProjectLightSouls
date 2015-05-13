@@ -40,7 +40,10 @@ public class PhysicsController : MonoBehaviour
         if (Pause)
             return;
 
-        recalculateAccelFriction(TimeToMaxSpeed, MovementMaxSpeed);
+        if (Input.magnitude == 0)
+            recalculateAccelFriction(TimeToMaxSpeed, DodgeMaxSpeed);
+        else
+            recalculateAccelFriction(TimeToMaxSpeed, MovementMaxSpeed);
         
         float dt = Time.deltaTime;
 
@@ -101,7 +104,7 @@ public class PhysicsController : MonoBehaviour
 
         airSpeed = direction.normalized * speed;
 
-        Debug.Log(string.Format("Dodge t: {0} d:{1} s: {2}", time, direction, speed));
+       // Debug.Log(string.Format("Dodge t: {0} d:{1} s: {2}", time, direction, speed));
 
         yield return new WaitForSeconds(time);
 
