@@ -20,6 +20,9 @@ public class FrogAI : MonoBehaviour
     //public bool animationPlaying;
     public string animName;
 
+    public Animator Root;
+    public Animator Animations;
+
     private AIBehaviorController AIController;
     private PhysicsController ph;
     private Animator anim;
@@ -42,7 +45,7 @@ public class FrogAI : MonoBehaviour
     {
         AIController = GetComponent<AIBehaviorController>();
         ph = GetComponent<PhysicsController>();
-        anim = GetComponent<Animator>();
+        anim = Animations;//GetComponent<Animator>();
 		tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
