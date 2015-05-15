@@ -9,8 +9,8 @@ public class AIBehavior
     public float Weight;
     public string Type;
     public string Function;
-
-   // public bool Finished;
+    public bool Mirrored;
+    public float AnimSpeed;
 }
 
 [System.Serializable]
