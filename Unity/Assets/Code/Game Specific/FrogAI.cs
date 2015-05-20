@@ -66,15 +66,17 @@ public class FrogAI : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.I))
         {
-            //AIController.PrintBehaviors();
-            getAnimCurves();
+            AIController.PrintBehaviors();
+            //getAnimCurves();
         }
 
         //animNames();
 
+        AIController.ClearBehaviors();
+
         animName = getAnimName();
 
-        AIController.ClearBehaviors();
+        
 	}
 
     private IEnumerator CoreLogicLoop()
