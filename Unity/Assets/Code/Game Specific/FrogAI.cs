@@ -75,8 +75,6 @@ public class FrogAI : MonoBehaviour
         AIController.ClearBehaviors();
 
         animName = getAnimName();
-
-        
 	}
 
     private IEnumerator CoreLogicLoop()
