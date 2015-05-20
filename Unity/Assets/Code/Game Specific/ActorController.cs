@@ -58,6 +58,12 @@ public class ActorController : MonoBehaviour
         anim.SetBool(DodgeStr, false);
     }
 
+    public void RestartActor()
+    {
+        anim.Play("Idle", 0, 0);
+        pc.RestartPhysics();
+    }
+
     public void Heal()
     {
         Debug.Log("Heal");
