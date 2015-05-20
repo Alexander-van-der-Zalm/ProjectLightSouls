@@ -6,6 +6,8 @@ public class GameState : MonoBehaviour
 {
     private UIManager ui;
 
+    public RespawnRegister RespawnRegister;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -25,6 +27,7 @@ public class GameState : MonoBehaviour
     public void RestartGame()
     {
         Debug.Log("Restart game");
+        RespawnRegister.RespawnAll();
     }
 
     public void StartGame()
