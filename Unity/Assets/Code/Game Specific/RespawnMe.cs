@@ -59,8 +59,6 @@ public class RespawnMe : MonoBehaviour
                 transform.rotation = m_orientation;
                 break;
         }
-        Debug.Log(gameObject.name + " Respawned tos " + transform.position);
-        Debug.Break();
     }
 
     // Register to gamestate/levelstate

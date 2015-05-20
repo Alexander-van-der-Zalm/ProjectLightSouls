@@ -53,4 +53,9 @@ public class InputController : MonoBehaviour
 
         actor.Move(Controls.Horizontal.Value(), Controls.Vertical.Value());
 	}
+
+    void OnDisable()
+    {
+        actor.Move(0, 0);
+    }
 }

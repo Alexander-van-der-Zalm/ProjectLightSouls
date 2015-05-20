@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 [RequireComponent(typeof(UIManager))]
 public class GameState : MonoBehaviour 
 {
     private UIManager ui;
+    private InputController playerInput;
 
     public RespawnRegister RespawnRegister;
 
@@ -12,12 +14,8 @@ public class GameState : MonoBehaviour
 	void Start ()
     {
         ui = GetComponent<UIManager>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        playerInput = GameObject.FindObjectOfType<InputController>();
+    }
 
     public void ExitGame()
     {
@@ -28,21 +26,46 @@ public class GameState : MonoBehaviour
     {
         Debug.Log("Restart game");
         RespawnRegister.RespawnAll();
+
+        activatePlayer();
+    }
+
+    private void activatePlayer()
+    {
+        playerInput.enabled = true;
+        ActorController actor = playerInput.GetComponent<ActorController>();
+        if (actor != null)
+            actor.RestartActor();
     }
 
     public void StartGame()
     {
         Debug.Log("Start game");
+        activatePlayer();
     }
 
     public void PlayerHit(PlayerData player)
     {
-        // Play sound
 
-        // Fade in black
 
-        // Put in the game over ui
-        ui.ChangeState(UIManager.GameStates.GameOver);
+        // Check for death:
+
+        // No Death:
+            // Hit sound
+
+            // Screen Shake
+
+        // Death:
+            // Disable player input
+            player.GetComponent<InputController>().enabled = false;
+            // Play sound
+
+            // Screen Shake
+
+            // Fade in black
+
+            // Put in the game over ui
+            ui.ChangeState(UIManager.GameStates.GameOver);
 
     }
 }
