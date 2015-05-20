@@ -20,6 +20,8 @@ public class RespawnMe : MonoBehaviour
 
     public Transform RespawnPoint;
 
+    public int Priority = 0;
+
     private Vector3 m_origin;
     private Quaternion m_orientation;
     private Rigidbody2D rb;
@@ -44,14 +46,21 @@ public class RespawnMe : MonoBehaviour
         if (Method == RespawnMethod.Origin)
             transform.position = m_origin;
         else
-            transform.position = RespawnPoint.transform.position;
-
+        {
+            if(RespawnPoint != null)
+                transform.position = RespawnPoint.position;
+            else
+                transform.position = m_origin;
+        }
+        
         switch(OrientationMethod)
         {
             default:
                 transform.rotation = m_orientation;
-                return;
+                break;
         }
+        Debug.Log(gameObject.name + " Respawned tos " + transform.position);
+        Debug.Break();
     }
 
     // Register to gamestate/levelstate

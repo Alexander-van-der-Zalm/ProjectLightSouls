@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 [System.Serializable]
 public class RespawnRegister
@@ -20,7 +21,8 @@ public class RespawnRegister
 
     public void RespawnAll()
     {
-        foreach(RespawnMe rs in ActiveRespawners)
+        ActiveRespawners = ActiveRespawners.OrderByDescending(t => t.Priority).ToList();
+        foreach (RespawnMe rs in ActiveRespawners)
         {
             rs.Respawn();
         }
