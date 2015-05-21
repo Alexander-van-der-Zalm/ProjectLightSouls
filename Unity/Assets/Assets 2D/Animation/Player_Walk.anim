@@ -15,35 +15,13 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: -.10810972, y: .994138956, z: 1.76133099e-08, w: -1.61965801e-07}
-        inSlope: {x: 0, y: 0, z: 0, w: 0}
-        outSlope: {x: 0, y: 0, z: 0, w: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    path: Root/txPlayerFootL
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: {x: 0, y: 0, z: -.114210777, w: .993456542}
-        inSlope: {x: 0, y: 0, z: 0, w: 0}
-        outSlope: {x: 0, y: 0, z: 0, w: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    path: Root/txPlayerFootR
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
         value: {x: 0, y: 0, z: -.00420032535, w: .999991179}
         inSlope: {x: 0, y: 0, z: 0, w: 0}
         outSlope: {x: 0, y: 0, z: 0, w: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: Root/Global_CTRL/bone_body_CTRL_GRP
+    path: Rig/Global_CTRL/bone_body_CTRL_GRP
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -54,7 +32,7 @@ AnimationClip:
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: Root/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
+    path: Rig/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -65,7 +43,29 @@ AnimationClip:
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: Root/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+    path: Rig/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0, y: 0, z: -.114210777, w: .993456542}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: Rig/txPlayerFootR
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -.10810972, y: .994138956, z: 1.76133099e-08, w: -1.61965801e-07}
+        inSlope: {x: 0, y: 0, z: 0, w: 0}
+        outSlope: {x: 0, y: 0, z: 0, w: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: Rig/txPlayerFootL
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -76,7 +76,7 @@ AnimationClip:
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: Root/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
+    path: Rig/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
   m_CompressedRotationCurves: []
   m_PositionCurves:
   - curve:
@@ -89,7 +89,7 @@ AnimationClip:
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: Root/Global_CTRL/bone_body_CTRL_GRP
+    path: Rig/Global_CTRL/bone_body_CTRL_GRP
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -100,7 +100,7 @@ AnimationClip:
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: Root/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
+    path: Rig/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -111,7 +111,7 @@ AnimationClip:
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: Root/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+    path: Rig/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -147,7 +147,7 @@ AnimationClip:
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: Root/txPlayerFootR
+    path: Rig/txPlayerFootR
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -183,7 +183,7 @@ AnimationClip:
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    path: Root/txPlayerFootL
+    path: Rig/txPlayerFootL
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -194,67 +194,67 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: 3125975533
+    - path: 1487891585
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: 2420736252
+    - path: 3580084261
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: 1764771938
+    - path: 739903675
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: 1455110060
+    - path: 1148705504
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: 2897480399
+    - path: 3195594627
       attribute: 1
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: 2897480399
+    - path: 1487891585
       attribute: 2
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: 1455110060
+    - path: 3580084261
       attribute: 2
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: 3125975533
+    - path: 739903675
       attribute: 2
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: 2420736252
+    - path: 1148705504
       attribute: 2
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: 1764771938
+    - path: 3195594627
       attribute: 2
       script: {fileID: 0}
       classID: 4
       customType: 0
       isPPtrCurve: 0
-    - path: 1542071250
+    - path: 515924747
       attribute: 2
       script: {fileID: 0}
       classID: 4
@@ -290,7 +290,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.x
-    path: Root/Global_CTRL/bone_body_CTRL_GRP
+    path: Rig/Global_CTRL/bone_body_CTRL_GRP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -304,7 +304,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.y
-    path: Root/Global_CTRL/bone_body_CTRL_GRP
+    path: Rig/Global_CTRL/bone_body_CTRL_GRP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -318,7 +318,63 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.z
-    path: Root/Global_CTRL/bone_body_CTRL_GRP
+    path: Rig/Global_CTRL/bone_body_CTRL_GRP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.x
+    path: Rig/Global_CTRL/bone_body_CTRL_GRP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.y
+    path: Rig/Global_CTRL/bone_body_CTRL_GRP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -.00420032535
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.z
+    path: Rig/Global_CTRL/bone_body_CTRL_GRP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .999991179
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.w
+    path: Rig/Global_CTRL/bone_body_CTRL_GRP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -332,7 +388,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.x
-    path: Root/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
+    path: Rig/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -346,7 +402,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.y
-    path: Root/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
+    path: Rig/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -360,7 +416,63 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.z
-    path: Root/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
+    path: Rig/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -4.59462512e-08
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.x
+    path: Rig/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -1.24980048e-07
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.y
+    path: Rig/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .938584149
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.z
+    path: Rig/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -.345050454
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.w
+    path: Rig/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -374,7 +486,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.x
-    path: Root/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+    path: Rig/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -388,7 +500,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.y
-    path: Root/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+    path: Rig/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -402,7 +514,63 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.z
-    path: Root/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+    path: Rig/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1.1047549e-07
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.x
+    path: Rig/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -7.43386579e-08
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.y
+    path: Rig/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .82965678
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.z
+    path: Rig/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -.558273792
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.w
+    path: Rig/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -426,7 +594,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.x
-    path: Root/txPlayerFootR
+    path: Rig/txPlayerFootR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -455,7 +623,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.y
-    path: Root/txPlayerFootR
+    path: Rig/txPlayerFootR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -479,7 +647,63 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.z
-    path: Root/txPlayerFootR
+    path: Rig/txPlayerFootR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.x
+    path: Rig/txPlayerFootR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.y
+    path: Rig/txPlayerFootR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -.114210777
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.z
+    path: Rig/txPlayerFootR
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .993456542
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_LocalRotation.w
+    path: Rig/txPlayerFootR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -503,7 +727,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.x
-    path: Root/txPlayerFootL
+    path: Rig/txPlayerFootL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -532,7 +756,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.y
-    path: Root/txPlayerFootL
+    path: Rig/txPlayerFootL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -556,7 +780,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.z
-    path: Root/txPlayerFootL
+    path: Rig/txPlayerFootL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -570,7 +794,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.x
-    path: Root/txPlayerFootL
+    path: Rig/txPlayerFootL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -584,7 +808,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.y
-    path: Root/txPlayerFootL
+    path: Rig/txPlayerFootL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -598,7 +822,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.z
-    path: Root/txPlayerFootL
+    path: Rig/txPlayerFootL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -612,7 +836,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.w
-    path: Root/txPlayerFootL
+    path: Rig/txPlayerFootL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -626,7 +850,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.x
-    path: Root/txPlayerFootR
+    path: Rig/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -640,231 +864,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.y
-    path: Root/txPlayerFootR
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -.114210777
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.z
-    path: Root/txPlayerFootR
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: .993456542
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.w
-    path: Root/txPlayerFootR
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.x
-    path: Root/Global_CTRL/bone_body_CTRL_GRP
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.y
-    path: Root/Global_CTRL/bone_body_CTRL_GRP
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -.00420032535
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.z
-    path: Root/Global_CTRL/bone_body_CTRL_GRP
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: .999991179
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.w
-    path: Root/Global_CTRL/bone_body_CTRL_GRP
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -4.59462512e-08
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.x
-    path: Root/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -1.24980048e-07
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.y
-    path: Root/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: .938584149
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.z
-    path: Root/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -.345050454
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.w
-    path: Root/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1.1047549e-07
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.x
-    path: Root/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -7.43386579e-08
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.y
-    path: Root/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: .82965678
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.z
-    path: Root/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -.558273792
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.w
-    path: Root/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.x
-    path: Root/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: m_LocalRotation.y
-    path: Root/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
+    path: Rig/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -878,7 +878,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.z
-    path: Root/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
+    path: Rig/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -892,7 +892,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalRotation.w
-    path: Root/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
+    path: Rig/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -900,42 +900,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0
+        value: 346.883789
         inSlope: 0
-        outSlope: 0
-        tangentMode: 10
+        outSlope: NaN
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.x
-    path: Root/txPlayerFootL
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 180
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.y
-    path: Root/txPlayerFootL
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -12.4127197
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.z
-    path: Root/txPlayerFootL
+    attribute: localEulerAngles.z
+    path: Rig/txPlayerFootR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -944,12 +916,12 @@ AnimationClip:
       - time: 0
         value: 0
         inSlope: 0
-        outSlope: 0
-        tangentMode: 10
+        outSlope: NaN
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.x
-    path: Root/txPlayerFootR
+    attribute: localEulerAngles.y
+    path: Rig/txPlayerFootR
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -958,68 +930,26 @@ AnimationClip:
       - time: 0
         value: 0
         inSlope: 0
-        outSlope: 0
-        tangentMode: 10
+        outSlope: NaN
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.y
-    path: Root/txPlayerFootR
+    attribute: localEulerAngles.x
+    path: Rig/txPlayerFootR
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -13.1162109
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
+        value: 247.873016
+        inSlope: NaN
+        outSlope: NaN
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.z
-    path: Root/txPlayerFootR
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.x
-    path: Root/Global_CTRL/bone_body_CTRL_GRP
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.y
-    path: Root/Global_CTRL/bone_body_CTRL_GRP
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -.481323242
-        inSlope: -3.669873
-        outSlope: -3.669873
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.z
-    path: Root/Global_CTRL/bone_body_CTRL_GRP
+    attribute: localEulerAngles.z
+    path: Rig/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1027,13 +957,83 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 1.52587891e-05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
+        inSlope: NaN
+        outSlope: NaN
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.x
-    path: Root/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
+    attribute: localEulerAngles.y
+    path: Rig/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -0
+        inSlope: NaN
+        outSlope: NaN
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: localEulerAngles.x
+    path: Rig/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 347.58728
+        inSlope: 0
+        outSlope: NaN
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: localEulerAngles.z
+    path: Rig/txPlayerFootL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 180.000015
+        inSlope: -Infinity
+        outSlope: -Infinity
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: localEulerAngles.y
+    path: Rig/txPlayerFootL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: -0
+        inSlope: 0
+        outSlope: NaN
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: localEulerAngles.x
+    path: Rig/txPlayerFootL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 359.518677
+        inSlope: NaN
+        outSlope: NaN
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: localEulerAngles.z
+    path: Rig/Global_CTRL/bone_body_CTRL_GRP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1041,27 +1041,13 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
+        inSlope: NaN
+        outSlope: NaN
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.y
-    path: Root/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: -499.630188
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.z
-    path: Root/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
+    attribute: localEulerAngles.y
+    path: Rig/Global_CTRL/bone_body_CTRL_GRP
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1069,13 +1055,41 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
+        inSlope: NaN
+        outSlope: NaN
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.x
-    path: Root/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+    attribute: localEulerAngles.x
+    path: Rig/Global_CTRL/bone_body_CTRL_GRP
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 220.369751
+        inSlope: NaN
+        outSlope: NaN
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: localEulerAngles.z
+    path: Rig/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: NaN
+        outSlope: NaN
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: localEulerAngles.y
+    path: Rig/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1083,41 +1097,27 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 1.52587891e-05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
+        inSlope: NaN
+        outSlope: NaN
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.y
-    path: Root/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
+    attribute: localEulerAngles.x
+    path: Rig/Global_CTRL/bone_handL_CTRL_GRP/bone_handL_CTRL
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: -472.126953
+        value: -0
         inSlope: 0
-        outSlope: 0
-        tangentMode: 10
+        outSlope: NaN
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.z
-    path: Root/Global_CTRL/bone_handR_CTRL_GRP/bone_handR_CTRL
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.x
-    path: Root/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
+    attribute: localEulerAngles.x
+    path: Rig/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1126,26 +1126,26 @@ AnimationClip:
       - time: 0
         value: 0
         inSlope: 0
-        outSlope: 0
-        tangentMode: 10
+        outSlope: NaN
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.y
-    path: Root/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
+    attribute: localEulerAngles.y
+    path: Rig/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
     classID: 4
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .185577393
-        inSlope: 1.57209468
-        outSlope: .401607901
-        tangentMode: 1
+        value: .185577407
+        inSlope: -3.19014732e+36
+        outSlope: -Infinity
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-    attribute: localEulerAnglesBaked.z
-    path: Root/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
+    attribute: localEulerAngles.z
+    path: Rig/Global_CTRL/bone_body/txPlayerBody/txPlayerHead
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
