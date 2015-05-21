@@ -40,9 +40,9 @@ public class GameState : MonoBehaviour
     private void activatePlayer()
     {
         playerInput.enabled = true;
-        ActorController actor = playerInput.GetComponent<ActorController>();
-        if (actor != null)
-            actor.RestartActor();
+        //ActorController actor = playerInput.GetComponent<ActorController>();
+        //if (actor != null)
+        //    actor.RestartActor();
     }
 
     public void StartGame()

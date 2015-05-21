@@ -25,6 +25,19 @@ public class RespawnRegister
         foreach (RespawnMe rs in ActiveRespawners)
         {
             rs.Respawn();
+            Animator anim = rs.GetComponent<Animator>();
+            PhysicsController pc = rs.GetComponent<PhysicsController>();
+
+            if (anim != null)
+            {
+                AnimatorResetter.ResetVariables(anim);
+                AnimatorResetter.ResetStateToIdle(anim);
+            }
+
+            if(pc != null)
+            {
+                pc.RestartPhysics();
+            }
         }
     }
 

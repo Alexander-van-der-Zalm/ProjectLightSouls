@@ -51,29 +51,20 @@ public class ActorController : MonoBehaviour
         anim.SetTrigger(DodgeTriggerStr);
         anim.SetBool(DodgeStr, true);
 
-        int j = 0;
-        while(!pc.Airborne)
-        {
-            j++;
-            yield return null;
-        }
-
-        int i = 0;
         while (pc.Airborne)
         {
-            i++;
             yield return null;
         }
 
-        Debug.Log(i + " " + j);
         anim.SetBool(DodgeStr, false);
     }
 
-    public void RestartActor()
-    {
-        anim.Play("Idle", 0, 0);
-        pc.RestartPhysics();
-    }
+    //public void RestartActor()
+    //{
+    //    anim.Play("Idle", 0, 0);
+    //    pc.RestartPhysics();
+    //    AnimatorResetter.ResetVariables (anim);
+    //}
 
     public void Heal()
     {
