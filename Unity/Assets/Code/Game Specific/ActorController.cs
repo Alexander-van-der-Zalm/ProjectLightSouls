@@ -16,7 +16,7 @@ public class ActorController : MonoBehaviour
     private string attackTriggerStr = "AttackTrigger";
     private string attackStr = "Attack";
     private string DodgeTriggerStr = "DodgeTrigger";
-    private string DodgeStr = "Dodge";
+    private string DodgeStr = "Dodging";
 
     // Use this for initialization
     void Start () 
@@ -50,11 +50,22 @@ public class ActorController : MonoBehaviour
     {
         anim.SetTrigger(DodgeTriggerStr);
         anim.SetBool(DodgeStr, true);
-        while (pc.Airborne)
+
+        int j = 0;
+        while(!pc.Airborne)
         {
+            j++;
             yield return null;
         }
 
+        int i = 0;
+        while (pc.Airborne)
+        {
+            i++;
+            yield return null;
+        }
+
+        Debug.Log(i + " " + j);
         anim.SetBool(DodgeStr, false);
     }
 
