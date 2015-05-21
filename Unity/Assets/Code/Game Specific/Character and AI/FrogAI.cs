@@ -16,6 +16,7 @@ public class FrogAI : MonoBehaviour
     public float RotationChance;
     public float RotationAngle = 4.0f;
     //public Vector2 RotationTarget;
+    public float JumpDistance = 3.0f;
 
     //public bool animationPlaying;
     public string animName;
@@ -199,7 +200,7 @@ public class FrogAI : MonoBehaviour
         Vector2 randomDir = RandomDir();
         yield return RotateCR(randomDir);
         // Change to tr.forward
-        yield return StartCoroutine(JumpCR(tr.up, 100.0f));
+        yield return StartCoroutine(JumpCR(tr.up, JumpDistance));
     }
 
     #endregion
