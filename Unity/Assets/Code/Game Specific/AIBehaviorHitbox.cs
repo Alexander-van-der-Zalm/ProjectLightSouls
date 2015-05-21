@@ -9,14 +9,11 @@ public class AIBehaviorHitbox : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-       
-        
         for (int i = 0; i < behaviors.Count; i++)
         {
             // Add animation state check if prefered
             if (behaviors[i].Tag == "" || other.CompareTag(behaviors[i].Tag))
                 controller.AddBehavior(behaviors[i].Behavior);
         }
-            
     }
 }

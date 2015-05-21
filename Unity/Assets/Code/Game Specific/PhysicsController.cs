@@ -63,13 +63,20 @@ public class PhysicsController : MonoBehaviour
         speed = rb.velocity.magnitude;
     }
 
+    public void RestartPhysics()
+    {
+        StopAllCoroutines();
+        dodging = false;
+        Airborne = false;
+        Pause = false;
+    }
+
     private void recalculateAccelFriction(float timeToMaxSpeed, float maxSpeed)
     {
         // Inefficient recalculate each fram, but who cares
         m_friction = timeToMaxSpeed != 0 ? 2 / TimeToMaxSpeed : 0;
         m_accel = m_friction * maxSpeed;
     }
-
 
     public void Dodge(Vector2 direction, float distance, float speed)
     {

@@ -20,9 +20,6 @@ public class FrogAI : MonoBehaviour
     //public bool animationPlaying;
     public string animName;
 
-    public Animator Root;
-    public Animator Animations;
-
     private AIBehaviorController AIController;
     private PhysicsController ph;
     private Animator anim;
@@ -45,7 +42,7 @@ public class FrogAI : MonoBehaviour
     {
         AIController = GetComponent<AIBehaviorController>();
         ph = GetComponent<PhysicsController>();
-        anim = Animations;//GetComponent<Animator>();
+        anim = GetComponent<Animator>();
 		tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -69,15 +66,15 @@ public class FrogAI : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.I))
         {
-            //AIController.PrintBehaviors();
-            getAnimCurves();
+            AIController.PrintBehaviors();
+            //getAnimCurves();
         }
 
         //animNames();
 
-        animName = getAnimName();
-
         AIController.ClearBehaviors();
+
+        animName = getAnimName();
 	}
 
     private IEnumerator CoreLogicLoop()
@@ -213,6 +210,9 @@ public class FrogAI : MonoBehaviour
     {
         Vector2 newForward = (target.position - tr.position).normalized;
         float deltaAngle = getAngle(tr.up, newForward);
+        float sign = Mathf.Sign(deltaAngle);
+
+        //Debug.Log("delta " + deltaAngle + " sign " + sign);
 
         if (Mathf.Abs(deltaAngle) > RotationAngle)
         {
@@ -220,8 +220,9 @@ public class FrogAI : MonoBehaviour
             anim.SetInteger(rotateStr, (int)Mathf.Sign(deltaAngle));
         }
 
+        // Check for delta angle difference, sign change and timeout
         float t0 = Time.realtimeSinceStartup;
-        while (Mathf.Abs(deltaAngle) > RotationAngle && (Time.realtimeSinceStartup - t0) <= maxTime)
+        while (Mathf.Abs(deltaAngle) > RotationAngle && (Time.realtimeSinceStartup - t0) <= maxTime && sign == Mathf.Sign(deltaAngle))
         {
             deltaAngle = getAngle(tr.up, newForward);
             newForward = (target.position - tr.position).normalized;
@@ -229,7 +230,7 @@ public class FrogAI : MonoBehaviour
             yield return null;
         }
 
-        anim.SetFloat(rotateStr, 0);
+        anim.SetInteger(rotateStr, 0);
     }
 
     private IEnumerator RotateCR(Vector2 newForward)

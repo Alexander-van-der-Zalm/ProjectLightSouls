@@ -13,6 +13,12 @@ public class UIManager : MonoBehaviour
 
     private GameObject current;
 
+    public void ChangeState(string newState)
+    {
+        GameStates state = (GameStates)Enum.Parse(typeof(GameStates), newState);
+        ChangeState(newState);
+    }
+
     public void ChangeState(GameStates newState)
     {
         GameObject newScreen = GetState(newState);
