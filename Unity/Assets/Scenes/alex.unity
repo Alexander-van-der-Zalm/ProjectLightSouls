@@ -252,47 +252,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 466774, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 5.75312527e-08
+      value: 5.75312349e-08
       objectReference: {fileID: 0}
     - target: {fileID: 466774, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -1.77026749e-09
+      value: -1.77061921e-09
       objectReference: {fileID: 0}
     - target: {fileID: 466774, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -.0679496825
+      value: -.0679435432
       objectReference: {fileID: 0}
     - target: {fileID: 466774, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .99768877
+      value: .997689188
       objectReference: {fileID: 0}
     - target: {fileID: 461222, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -4.34406843e-07
+      value: -4.80171252e-07
       objectReference: {fileID: 0}
     - target: {fileID: 461222, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 9.23090138e-09
+      value: 2.04615986e-08
       objectReference: {fileID: 0}
     - target: {fileID: 461222, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -.00805202033
+      value: -.00806266069
       objectReference: {fileID: 0}
     - target: {fileID: 441846, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -.690401375
+      value: -.690398097
       objectReference: {fileID: 0}
     - target: {fileID: 441846, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -.72342658
+      value: -.723429739
       objectReference: {fileID: 0}
     - target: {fileID: 441846, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -2.37078496e-07
+      value: -2.77747318e-07
       objectReference: {fileID: 0}
     - target: {fileID: 441846, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 2.47946332e-07
+      value: 2.71747695e-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415712, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
+      propertyPath: Damage.ResolveMethod
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
@@ -347,6 +351,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6784c5ad94599994eb32e8051535dff5, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1502794354
+GameObject:
+  m_PrefabParentObject: {fileID: 110228, guid: cccd358c5059e6e4baad63714a250e70, type: 2}
+  m_PrefabInternal: {fileID: 831815642}
+--- !u!114 &1502794357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502794354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095607d603be26a48831157a36cb72be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1
+  MaxHealth: 1
+  CharacterType: 3
 --- !u!1001 &1541124931
 Prefab:
   m_ObjectHideFlags: 0
@@ -393,6 +415,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1268f3d9f93ae1940b7266c338b0e7f3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1698003642
+GameObject:
+  m_PrefabParentObject: {fileID: 197962, guid: c2f4d47ed559e8e489cd1856b885ff7e, type: 2}
+  m_PrefabInternal: {fileID: 2003945774}
+--- !u!114 &1698003643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1698003642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095607d603be26a48831157a36cb72be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 3
+  MaxHealth: 3
+  CharacterType: 0
 --- !u!4 &1856517791
 Transform:
   m_PrefabParentObject: {fileID: 434328, guid: c2f4d47ed559e8e489cd1856b885ff7e, type: 2}

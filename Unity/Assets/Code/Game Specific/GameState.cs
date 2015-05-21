@@ -51,7 +51,7 @@ public class GameState : MonoBehaviour
         activatePlayer();
     }
 
-    public void PlayerHit(PlayerData player)
+    public void PlayerDeath(GameObject player)
     {
 
 

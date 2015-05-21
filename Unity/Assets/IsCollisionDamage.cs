@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class IsCollisionDamage : MonoBehaviour
 {
@@ -17,7 +17,8 @@ public class IsCollisionDamage : MonoBehaviour
     public enum DamageFormula
     {
         SetAmount,
-        VelocityBased//,
+        VelocityBasedNormal,
+        VelocityBasedFullyScaled//,
         //FullInfo
     }
 
@@ -27,17 +28,44 @@ public class IsCollisionDamage : MonoBehaviour
     public float MinimumVelocity = 0.0f;
 
     public DamageInfo Damage;
-    
-    public void CheckCollisionForDamage(Collision2D other)
+
+    public List<string> TagsToHit;
+
+    void OnCollisionEnter2D(Collision2D other)
     {
+        Debug.Log(string.Format("dmg {0} minV {1} {2} tags {3} other {4} named {5}", DoesDamage, MinimumVelocity, other.relativeVelocity, TagsToHit.Count, other.gameObject.tag, other.gameObject.name));
+
         if (!DoesDamage)
             return;
 
-        if (other.relativeVelocity.magnitude < MinimumVelocity)
-            return;
+        // Measure relative velocity
+        //if (other.relativeVelocity.magnitude < MinimumVelocity)
+        //    return;
 
         // Maybe check/add specific direction??
 
+        // Check Tag
+        if(TagsToHit.Count > 0)
+        {
+            foreach (string tag in TagsToHit)
+                if (other.gameObject.CompareTag(tag))
+                    return;
+        }
+
+        // Calculate damage
+        float damage = calculateDamage(other);
+
         // Resolve
+        // Find the health info
+        HealthInfo hi = HealthInfo.FindHealthInfo(other.gameObject);
+        if (hi != null)
+            hi.OnHit(damage);
+        // Trigger resolution in HealthInfo
+    }
+
+    private float calculateDamage(Collision2D other)
+    {
+        // Todo other methods / switch
+        return Damage.DamageAmount;
     }
 }

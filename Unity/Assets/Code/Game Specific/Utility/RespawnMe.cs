@@ -37,12 +37,36 @@ public class RespawnMe : MonoBehaviour
 	
     public void Respawn()
     {
+        // Reset animationcomponent
+        Animator anim = GetComponent<Animator>();
+        if (anim != null)
+        {
+            AnimatorResetter.ResetVariables(anim);
+            AnimatorResetter.ResetStateToIdle(anim);
+        }
+
+        // Reset physicsController
+        PhysicsController pc = GetComponent<PhysicsController>();
+        if (pc != null)
+        {
+            pc.RestartPhysics();
+        }
+
+        // Reset Health
+        HealthInfo hi = GetComponent<HealthInfo>();
+        if(hi != null)
+        {
+            hi.ReBirth();
+        }
+
         // Disable/reset rigidbody etc.
-        if(rb != null)
+        if (rb != null)
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = 0;
         }
+
+        // Reset position
         if (Method == RespawnMethod.Origin)
             transform.position = m_origin;
         else
@@ -53,6 +77,7 @@ public class RespawnMe : MonoBehaviour
                 transform.position = m_origin;
         }
         
+        // Reset orientation
         switch(OrientationMethod)
         {
             default:

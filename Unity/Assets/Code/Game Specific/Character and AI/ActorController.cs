@@ -76,10 +76,10 @@ public class ActorController : MonoBehaviour
         Debug.Log("Scan");
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {         
-        gs.PlayerHit(pd);
+    //public void OnCollisionEnter2D(Collision2D collision)
+    //{         
+        
 
-        Debug.Log("Collision!");
-    }
+    //    Debug.Log("Collision!");
+    //}
 }

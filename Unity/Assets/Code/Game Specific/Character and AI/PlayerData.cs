@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerData : MonoBehaviour 
+[RequireComponent(typeof(HealthInfo))]
+public class PlayerData : MonoBehaviour
 {
-    public float Health;
+    public HealthInfo HealthInfo;
     public Vector3 Location;
     public Transform PlayerTransform;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+    {
+        HealthInfo = GetComponent<HealthInfo>();
 	}
 	
 	// Update is called once per frame
