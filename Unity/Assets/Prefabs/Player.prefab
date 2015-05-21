@@ -579,6 +579,7 @@ GameObject:
   - 114: {fileID: 11469256}
   - 114: {fileID: 11419836}
   - 114: {fileID: 11412226}
+  - 114: {fileID: 11453944}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1215,6 +1216,20 @@ MonoBehaviour:
   OffsetPos: {x: 0, y: 0, z: 0}
   OffsetScale: {x: 1, y: 1, z: 1}
   OffsetOrient: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &11453944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095607d603be26a48831157a36cb72be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 3
+  MaxHealth: 3
+  CharacterType: 0
 --- !u!114 &11465546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1359,7 +1374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f75efb8d24800749a1263ac184532ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1
+  HealthInfo: {fileID: 0}
   Location: {x: 0, y: 0, z: 0}
   PlayerTransform: {fileID: 434328}
 --- !u!114 &11498276

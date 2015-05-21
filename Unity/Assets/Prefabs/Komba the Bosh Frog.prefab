@@ -164,6 +164,7 @@ GameObject:
   - 114: {fileID: 11463884}
   - 114: {fileID: 11439184}
   - 114: {fileID: 11410816}
+  - 114: {fileID: 11448192}
   m_Layer: 0
   m_Name: Komba the Bosh Frog
   m_TagString: Untagged
@@ -1901,7 +1902,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112630}
-  m_LocalRotation: {x: -.690398097, y: -.723429739, z: -2.77747318e-07, w: 2.71747695e-07}
+  m_LocalRotation: {x: -.690401375, y: -.72342658, z: -2.37078496e-07, w: 2.47946332e-07}
   m_LocalPosition: {x: -3.07965209e-08, y: 1.00000012, z: 6.56931434e-08}
   m_LocalScale: {x: .0645849705, y: .0645849705, z: .0645849854}
   m_Children: []
@@ -2054,7 +2055,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176304}
-  m_LocalRotation: {x: -4.80171252e-07, y: 2.04615986e-08, z: -.00806266069, w: .999967575}
+  m_LocalRotation: {x: -4.34406843e-07, y: 9.23090138e-09, z: -.00805202033, w: .999967575}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1.51130939, y: 1.51130939, z: 1.51130939}
   m_Children:
@@ -2109,7 +2110,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176868}
-  m_LocalRotation: {x: 5.75312349e-08, y: -1.77061921e-09, z: -.0679435432, w: .997689188}
+  m_LocalRotation: {x: 5.75312527e-08, y: -1.77026749e-09, z: -.0679496825, w: .99768877}
   m_LocalPosition: {x: -.0363310017, y: .880620003, z: 0}
   m_LocalScale: {x: 1.24827063, y: 1.25459707, z: .892727256}
   m_Children:
@@ -3316,6 +3317,7 @@ MonoBehaviour:
     DamageAmount: 1
     ResolveMethod: 0
     VelocityNormalizeMagnitude: 3
+  TagsToHit: []
 --- !u!114 &11416492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3347,6 +3349,7 @@ MonoBehaviour:
     DamageAmount: 1
     ResolveMethod: 0
     VelocityNormalizeMagnitude: 3
+  TagsToHit: []
 --- !u!114 &11422732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3378,6 +3381,7 @@ MonoBehaviour:
     DamageAmount: 1
     ResolveMethod: 0
     VelocityNormalizeMagnitude: 3
+  TagsToHit: []
 --- !u!114 &11423416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3456,6 +3460,7 @@ MonoBehaviour:
     DamageAmount: 1
     ResolveMethod: 0
     VelocityNormalizeMagnitude: 3
+  TagsToHit: []
 --- !u!114 &11430308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3508,6 +3513,7 @@ MonoBehaviour:
     DamageAmount: 1
     ResolveMethod: 0
     VelocityNormalizeMagnitude: 3
+  TagsToHit: []
 --- !u!114 &11439184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3634,6 +3640,7 @@ MonoBehaviour:
     DamageAmount: 1
     ResolveMethod: 0
     VelocityNormalizeMagnitude: 3
+  TagsToHit: []
 --- !u!114 &11444472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3662,6 +3669,20 @@ MonoBehaviour:
   boneToAimAt: {fileID: 441534}
   InEditBoneMode: 0
   _newSelection: []
+--- !u!114 &11448192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095607d603be26a48831157a36cb72be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1
+  MaxHealth: 1
+  CharacterType: 3
 --- !u!114 &11449128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3693,6 +3714,7 @@ MonoBehaviour:
     DamageAmount: 1
     ResolveMethod: 0
     VelocityNormalizeMagnitude: 3
+  TagsToHit: []
 --- !u!114 &11452538
 MonoBehaviour:
   m_ObjectHideFlags: 1
