@@ -69,6 +69,8 @@ public class PhysicsController : MonoBehaviour
         dodging = false;
         Airborne = false;
         Pause = false;
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0;
     }
 
     private void recalculateAccelFriction(float timeToMaxSpeed, float maxSpeed)
