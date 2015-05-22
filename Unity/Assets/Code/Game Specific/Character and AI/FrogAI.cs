@@ -18,6 +18,8 @@ public class FrogAI : MonoBehaviour
     //public Vector2 RotationTarget;
     public float JumpDistance = 3.0f;
 
+    public float AnimationJumpSpeed = 0.917f;
+
     //public bool animationPlaying;
     public string animName;
 
@@ -37,7 +39,8 @@ public class FrogAI : MonoBehaviour
     private string attackTrStr = "AttackTrigger";
     private string rotateTrStr = "RotateTrigger";
     private string rotateStr = "Rotate";
-
+    private string JumpSpeedStr = "JumpSpeed";
+    private int m_animVelocity;
     // Use this for initialization
     void Start () 
     {
@@ -57,6 +60,8 @@ public class FrogAI : MonoBehaviour
         // The core behavior loop
         update = StartCoroutine(CoreLogicLoop());
 
+        m_animVelocity = Animator.StringToHash("Velocity");
+
         //currentRoutine = StartCoroutine(RandomMoveCR());
 	}
 
@@ -72,6 +77,7 @@ public class FrogAI : MonoBehaviour
         }
 
         //animNames();
+        anim.SetFloat(m_animVelocity, rb.velocity.magnitude);
 
         AIController.ClearBehaviors();
 
@@ -127,6 +133,8 @@ public class FrogAI : MonoBehaviour
                 return Attack(3);
             case "SwipeSW":
                 return Attack(4);
+            case "AttackNDoubleTrouble":
+                return Attack(5);
             case "BackHop":
             case "SideHop":
             case "SideSweep":
@@ -174,14 +182,19 @@ public class FrogAI : MonoBehaviour
         //// Chargeup
         //// Stay charging til animation is finished
         anim.SetTrigger(takeOffStr);
-        yield return StartCoroutine(waitForAnimation(id+"_TakeOff"));
+
+        
+        anim.SetFloat(JumpSpeedStr, ph.DodgeMaxSpeed / (AnimationJumpSpeed * 5));
+        // Launch after the charge animation
+        //// Now wait till charge anim has finished  
+        yield return StartCoroutine(waitForAnimation(id + "_Charge"));
+        yield return StartCoroutine(waitForAnimationToFinish(id + "_Charge"));
 
         ph.Dodge(jumpDirection, jumpDistance);
 
-        // Now wait till charge anim has finished  
-        yield return StartCoroutine(waitForAnimationToFinish(id + "_TakeOff"));
+        // Takeoff
 
-        while(ph.Airborne)
+        while (ph.Airborne)
         {
             yield return null;
         }
