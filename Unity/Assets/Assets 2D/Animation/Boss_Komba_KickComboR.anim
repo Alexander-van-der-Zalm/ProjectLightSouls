@@ -5940,7 +5940,55 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: bone_back/bone_flank_R
-  m_FloatCurves: []
+  m_FloatCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.81666672
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2.5999999
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: DoesDamage
+    path: bone_hip/bone_leg_R/bone_knee_R/bone_ankle_R/bone_foot_R/tx_foot_R
+    classID: 114
+    script: {fileID: 11500000, guid: 80d58cad159c6e54ab1d06a2cab89578, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.81666672
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2.6500001
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: DoesDamage
+    path: bone_hip/bone_leg_R/bone_knee_R/tx_leg_lower_R
+    classID: 114
+    script: {fileID: 11500000, guid: 80d58cad159c6e54ab1d06a2cab89578, type: 3}
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -6013,6 +6061,18 @@ AnimationClip:
       attribute: 3
       script: {fileID: 0}
       classID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - path: 2013255381
+      attribute: 355210569
+      script: {fileID: 11500000, guid: 80d58cad159c6e54ab1d06a2cab89578, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 967384290
+      attribute: 355210569
+      script: {fileID: 11500000, guid: 80d58cad159c6e54ab1d06a2cab89578, type: 3}
+      classID: 114
       customType: 0
       isPPtrCurve: 0
     - path: 2107860735
@@ -29464,6 +29524,54 @@ AnimationClip:
     path: Global_CTRL/bone_back_CTRL_GRP/bone_back_CTRL/bone_neck_CTRL_GRP/bone_neck_CTRL
     classID: 4
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.81666672
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2.5999999
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: DoesDamage
+    path: bone_hip/bone_leg_R/bone_knee_R/bone_ankle_R/bone_foot_R/tx_foot_R
+    classID: 114
+    script: {fileID: 11500000, guid: 80d58cad159c6e54ab1d06a2cab89578, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 1.81666672
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2.6500001
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: DoesDamage
+    path: bone_hip/bone_leg_R/bone_knee_R/tx_leg_lower_R
+    classID: 114
+    script: {fileID: 11500000, guid: 80d58cad159c6e54ab1d06a2cab89578, type: 3}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2
