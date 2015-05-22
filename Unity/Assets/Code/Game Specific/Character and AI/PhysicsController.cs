@@ -13,12 +13,15 @@ public class PhysicsController : MonoBehaviour
     public float DodgeMaxSpeed;
     public float DodgeDistance;
 
+    public bool IgnoreDodgeStopCollision = false;
+
     public Vector2 Input;
 
     private Rigidbody2D rb;
 
     private Vector2 airSpeed;
     private bool dodging = false;
+    [HideInInspector]
     public bool Airborne = false;
     public bool Pause = false;
 
@@ -119,6 +122,15 @@ public class PhysicsController : MonoBehaviour
 
         Airborne = false;
         dodging = false;
+    }
+
+    // Make a hit on stopdodge/special animation??
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if(!IgnoreDodgeStopCollision && ( dodging || Airborne))
+        {
+            StopDodge();
+        }
     }
 
     #region Debug
