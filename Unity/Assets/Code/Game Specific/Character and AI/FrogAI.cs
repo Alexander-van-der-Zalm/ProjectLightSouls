@@ -133,6 +133,8 @@ public class FrogAI : MonoBehaviour
                 return Attack(3);
             case "SwipeSW":
                 return Attack(4);
+            case "AttackNDoubleTrouble":
+                return Attack(5);
             case "BackHop":
             case "SideHop":
             case "SideSweep":
