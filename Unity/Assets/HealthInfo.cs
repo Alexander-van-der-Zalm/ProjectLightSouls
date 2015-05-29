@@ -16,13 +16,23 @@ public class HealthInfo : MonoBehaviour
     public float MaxHealth = 1.0f;
     // Resistances etc.??
 
+    public string AnimatorDeathTrigger = "Death";
+    public string AnimatorHitTrigger = "Hit";
+
+    private int AnimHit;
+    private int AnimDeath;
+
     public Type CharacterType = Type.EnemyNPC;
 
     private GameState gs;
+    private Animator anim;
 
     void Start()
     {
         gs = GameObject.FindObjectOfType<GameState>();
+        anim = GetComponent<Animator>();
+        AnimHit = Animator.StringToHash(AnimatorHitTrigger);
+        AnimDeath = Animator.StringToHash(AnimatorDeathTrigger);
     }
 
     public void OnHit(float damage)
@@ -37,7 +47,8 @@ public class HealthInfo : MonoBehaviour
     private void Hit()
     {
         // Play sound
-
+        if (anim != null)
+            anim.SetTrigger(AnimHit);
         // ScreenShake
         // Where to define this
     }
@@ -68,7 +79,9 @@ public class HealthInfo : MonoBehaviour
     }
 
     private void CommonDeath()// add xp check?
-    { 
+    {
+        if (anim != null)
+            anim.SetTrigger(AnimDeath);
         // Respawn 
         
     }
