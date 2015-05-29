@@ -1180,6 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239a59bef8bb9aa4b99db0927d3f2503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeadZoneVelocity: .200000003
 --- !u!114 &11437760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1388,10 +1389,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72766349658c4b943a4b3cb95a12f3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementMaxSpeed: 5
+  MovementMaxSpeed: 3.5
   TimeToMaxSpeed: .200000003
-  DodgeMaxSpeed: 10
-  DodgeDistance: 3
+  DodgeMaxSpeed: 7
+  DodgeDistance: 4
+  IgnoreDodgeStopCollision: 0
   Input: {x: 0, y: 0}
   Airborne: 0
   Pause: 0
